@@ -15,9 +15,12 @@ Owner will have a calendar displayed of upcoming appointments.
 
 ## Technologies 
 Programming - Python(Flask Framework)
+
 Database - MySQL
+
 Web Design - HTML5
 
 ## Credits
 David Awanye - Developer 
+
 Eli Patrick - Developer
