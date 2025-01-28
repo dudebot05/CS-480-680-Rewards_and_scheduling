@@ -8,4 +8,6 @@
     <h1>New User</h1>
 </div>
 {{ wtf.quick_form(form) }}
+<br />
+<p class="text-left">Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
 {% endblock %}
