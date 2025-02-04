@@ -2,11 +2,11 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from config import config
 from flask_bootstrap import Bootstrap
-#from flask_login import LoginManager
+from flask_login import LoginManager
 
-#db = SQLAlchemy()
-#login_manager = LoginManager()
-#login_manager.login_view = 'auth.login'
+db = SQLAlchemy()
+login_manager = LoginManager()
+login_manager.login_view = 'auth.login'
 bootstrap = Bootstrap()
 
 def create_app(configName):
@@ -14,12 +14,12 @@ def create_app(configName):
     app.config.from_object(config[configName])
     config[configName].init_app(app)
 
-    #db.init_app(app)
-    #login_manager.init_app(app)
+    db.init_app(app)
+    login_manager.init_app(app)
     bootstrap.init_app(app)
 
-    #with app.app_context():
-    #    db.create_all()
+    with app.app_context():
+        db.create_all()
 
     from .auth import auth as auth_bluprint
     from .routes import main as main_bluprint
