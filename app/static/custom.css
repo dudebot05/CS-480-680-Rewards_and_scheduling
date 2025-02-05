@@ -1,0 +1,33 @@
+/* custom.css - Created by Iyona*/
+
+/* Change navbar background and border colors */
+.navbar-inverse {
+    background-color: #6b0191;  /* Blue background */
+    border-color: #6b0191;      /* Blue border */
+  }
+  
+  /* Change navbar text colors for contrast */
+  .navbar-inverse .navbar-brand,
+  .navbar-inverse .navbar-nav > li > a {
+    color: #fff;   /* White text */
+  }
+  
+  /* Optionally, if you want to change other elements (buttons, etc.) to blue: */
+  .btn-primary {
+    background-color: #6b0191;
+    border-color: #6b0191;
+  }
+
+  /*The login form card*/
+  .card-body {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.747);
+    background-color: white;
+  }
+
+  
+  .form-group-forgotpass{
+    line-height: 3.5;
+    color: rgb(8, 121, 219);
+  }
