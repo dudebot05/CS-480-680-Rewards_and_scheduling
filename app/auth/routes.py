@@ -7,6 +7,8 @@ from .. import db, login_manager
 from ..models.user import User
 from ..static.login import LoginForm
 from ..static.register import RegistrationForm
+#Added by Iyona
+from ..static.forgotpass import ForgotPassForm
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -48,3 +50,14 @@ def register():
 @auth.route('/admin', methods=['GET', 'POST'])
 def admin():
     return render_template('auth/admin.html')
+
+#Added by Iyona
+@auth.route('/forgotpassword', methods=['GET', 'POST'])
+def forgotpass():
+    form = ForgotPassForm()
+    user = User(
+        email=form.email.data,
+        )
+    flash('Account created')
+    flash('You can now login')
+    return render_template('auth/forgotpass.html', form=form)
