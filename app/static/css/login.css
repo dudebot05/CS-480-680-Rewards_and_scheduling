@@ -1,7 +1,16 @@
+body {
+  /*background-image: url('https://cdn.prod.website-files.com/6009ec8cda7f305645c9d91b/647a62c28d2e511ffa08d350_647817f5c7d7212ae98065f5_b25debab.png');*/
+  background-position: center;
+  transform:scale(1.0);
+  -moz-transform:scale(1.0);
+  background-size: auto;
+  /*background-color: #999851;*/
+}
+
 /* For navbar background and border colors */
 .navbar-inverse {
-  background-color: #e7e302;  /* Blue background */
-  border-color: #e7e302;      /* Blue border */
+  background-color: #e7e302;
+  border-color: #e7e302;   
 }
 
 /* Change navbar text colors for contrast */
@@ -20,7 +29,7 @@
 .card-body {
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.747);
+  box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.747);
   background-color: white;
 }
 

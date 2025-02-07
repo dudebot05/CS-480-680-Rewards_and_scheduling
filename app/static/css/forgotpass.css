@@ -1,0 +1,56 @@
+.card-body {
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.747);
+    background-color: white;
+  }
+
+  .form-group-title{
+    font-size: 25px;
+  }
+
+  .loginblock{
+    min-width: 350px;
+    margin-top: 20px;
+    margin-right: 450px;
+    margin-left: 400px;
+    max-width: 350px;
+  }
+  
+  .business-name{
+    line-height: 3;
+    font-size: 30px;
+  }
+
+  #email{
+    margin-bottom: 20px;
+  }
+
+  #notice{
+    opacity: .4;
+  }
+
+  .text-or{
+   margin-top: 15px;
+   overflow: hidden;
+   text-align: center;
+  }
+
+  .text-or::before,
+  .text-or::after {
+  background-color: #000;
+  content: "";
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+  }
+  .text-or::before {
+  right: 0.5em;
+  margin-left: -50%;
+  }
+  .text-or::after {
+  left: 0.5em;
+  margin-right: -50%;
+  }
