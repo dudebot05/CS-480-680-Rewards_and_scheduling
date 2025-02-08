@@ -1,14 +1,17 @@
 from ensurepip import bootstrap
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash, render_template_string
+from flask_mailman import EmailMessage
 from flask_login import login_user, logout_user, login_required, current_user
+from sqlalchemy import select
 from . import auth
 from .login_manager import load_user
 from .. import db, login_manager
 from ..models.user import User
 from ..static.login import LoginForm
 from ..static.register import RegistrationForm
-#Added by Iyona
-from ..static.forgotpass import ForgotPassForm
+from ..static.reset_password_form import ResetPasswordForm
+from ..static.passwordreset import PasswordResetForm
+from ..auth.reset_pass_email_content import reset_password_email_html_content
 
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
@@ -46,6 +49,49 @@ def register():
         flash('You can now login')
         return redirect(url_for('auth.login'))
     return render_template('auth/register.html', form=form)
+
+@auth.route('/reset_password', methods=['GET', 'POST'])
+def reset_password_request():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+    
+    form = PasswordResetForm()
+    if form.validate_on_submit():
+        user_select = select(User).where(User.email == form.email.data)
+        user = db.session.scalar(user_select)
+
+        if user:
+            send_reset_password_email(user)
+
+        flash('Instructions to reset your password were sent to your email address')
+
+        return redirect(url_for('auth.reset_password'))
+    return render_template('auth/reset_password.html', form=form)
+
+def send_reset_password_email(user):
+    reset_password_url = url_for('auth.reset_password', token=user.generate_reset_password_token(), user_id=user.id, _external=True)
+    email_body = render_template_string(reset_password_email_html_content, reset_password_url=reset_password_url)
+    message = EmailMessage(subject='Reset your password', body=email_body, to=[user.email])
+    message.content_subtype = 'html'
+    message.send()
+
+@auth.route('/reset_password/<token>/<int:user_id>', methods=['GET', 'POST'])
+def reset_password(token, user_id):
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
+    
+    user = User.validate_reset_password_token(token, user_id)
+    if not user:
+        return render_template('auth/reset_password_error.html', title='Reset Password error')
+    
+    form = ResetPasswordForm()
+    if form.validate_on_submit():
+        user.set_password(form.password.data)
+        db.session.commit()
+
+        return render_template('auth/reset_password_success.html', title='Reset Password success')
+    
+    return render_template('auth/reset_password.html', title='Reset Password', form=form)
 
 @auth.route('/admin', methods=['GET', 'POST'])
 def admin():
