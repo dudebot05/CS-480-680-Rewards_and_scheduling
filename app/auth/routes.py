@@ -96,3 +96,14 @@ def reset_password(token, user_id):
 @auth.route('/admin', methods=['GET', 'POST'])
 def admin():
     return render_template('auth/admin.html')
+
+#Added by Iyona
+@auth.route('/forgotpassword', methods=['GET', 'POST'])
+def forgotpass():
+    form = ForgotPassForm()
+    user = User(
+        email=form.email.data,
+        )
+    flash('Account created')
+    flash('You can now login')
+    return render_template('auth/forgotpass.html', form=form)

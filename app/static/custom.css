@@ -1,0 +1,54 @@
+/* For navbar background and border colors */
+.navbar-inverse {
+  background-color: #e7e302;  /* Blue background */
+  border-color: #e7e302;      /* Blue border */
+}
+
+/* Change navbar text colors for contrast */
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;   /* White text */
+}
+
+/* Login Button color global*/
+.btn-primary {
+  background-color: #d9d902;
+  border-color: #e7e302;
+}
+
+/*The login form card*/
+.card-body {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.747);
+  background-color: white;
+}
+
+/*Forgot password button*/
+.form-group-forgotpass{
+  line-height: 3.5;
+  color: rgb(8, 121, 219);
+}
+
+ /* Loyals Booking title*/
+.form-group-title{
+  font-size: 25px;
+}
+
+.loginblock{
+  min-width: 350px;
+  margin-top: 20px;
+  margin-right: 450px;
+  margin-left: 400px;
+  max-width: 350px;
+}
+
+/*Sign up button*/
+.card-footer{
+  line-height: 5.5;
+}
+
+.business-name{
+  line-height: 3;
+  font-size: 30px;
+}
