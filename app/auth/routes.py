@@ -57,19 +57,18 @@ def reset_password_request():
     
     form = PasswordResetForm()
     if form.validate_on_submit():
-        user_select = select(User).where(User.email == form.email.data)
-        user = db.session.scalar(user_select)
+        user = User.query.filter_by(email=form.email.data).first()
 
         if user:
             send_reset_password_email(user)
 
         flash('Instructions to reset your password were sent to your email address')
 
-        return redirect(url_for('auth.reset_password'))
-    return render_template('auth/reset_password.html', form=form)
+        return redirect(url_for('auth.reset_password_request'))
+    return render_template('auth/forgotpass.html', form=form)
 
 def send_reset_password_email(user):
-    reset_password_url = url_for('auth.reset_password', token=user.generate_reset_password_token(), user_id=user.id, _external=True)
+    reset_password_url = url_for('auth.reset_password', token=user.generate_password_reset_token(), user_id=user.id, _external=True)
     email_body = render_template_string(reset_password_email_html_content, reset_password_url=reset_password_url)
     message = EmailMessage(subject='Reset your password', body=email_body, to=[user.email])
     message.content_subtype = 'html'
@@ -86,7 +85,7 @@ def reset_password(token, user_id):
     
     form = ResetPasswordForm()
     if form.validate_on_submit():
-        user.set_password(form.password.data)
+        user.password = form.password.data
         db.session.commit()
 
         return render_template('auth/reset_password_success.html', title='Reset Password success')
@@ -96,14 +95,3 @@ def reset_password(token, user_id):
 @auth.route('/admin', methods=['GET', 'POST'])
 def admin():
     return render_template('auth/admin.html')
-
-#Added by Iyona
-@auth.route('/forgotpassword', methods=['GET', 'POST'])
-def forgotpass():
-    form = ForgotPassForm()
-    user = User(
-        email=form.email.data,
-        )
-    flash('Account created')
-    flash('You can now login')
-    return render_template('auth/forgotpass.html', form=form)
