@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Bookings{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Make a Booking</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {{ form.hidden_tag() }}
+                        <div class="mb-3">
+                            {{ form.service_type.label(class="form-label") }}
+                            {{ form.service_type(class="form-select") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.booking_date.label(class="form-label") }}
+                            {{ form.booking_date(class="form-control", type="datetime-local") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.notes.label(class="form-label") }}
+                            {{ form.notes(class="form-control") }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Create Booking</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

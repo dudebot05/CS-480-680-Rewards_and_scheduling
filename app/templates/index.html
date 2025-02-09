@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold mb-4">Welcome to Loyals Booking & Rewards System</h1>
+            <p class="lead mb-4">Book your services easily and earn rewards with every booking.</p>
+            <div class="d-grid gap-3 d-sm-flex">
+                <a href="{{ url_for('booking.bookings') }}" class="btn btn-primary btn-lg px-4">Make a Booking</a>
+                <a href="#services" class="btn btn-outline-secondary btn-lg px-4">Our Services</a>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-4">
+                    <h3 class="card-title mb-4">Featured Services</h3>
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="p-3 border rounded text-center">
+                                <h5>Haircut</h5>
+                                <p class="mb-0">50 points</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border rounded text-center">
+                                <h5>Massage</h5>
+                                <p class="mb-0">100 points</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border rounded text-center">
+                                <h5>Spa</h5>
+                                <p class="mb-0">150 points</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 border rounded text-center">
+                                <h5>Facial</h5>
+                                <p class="mb-0">75 points</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
