@@ -6,6 +6,7 @@ from .rewards import RewardTransaction
 from .permission import Permission
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
 
 class User(UserMixin, db.Model):
     __tablename__ = 'user'
@@ -46,3 +47,25 @@ class User(UserMixin, db.Model):
     
     def is_administrator(self):
         return self.can(Permission.ADMINISTER)
+    
+    def generate_password_reset_token(self):
+        serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+        return serializer.dumps(self.email, salt=self.password_hash)
+    
+    @staticmethod
+    def validate_reset_password_token(token: str, user_id: int):
+        user = db.session.get(User, user_id)
+
+        if user is None:
+            return None
+        
+        serializer = URLSafeTimedSerializer(current_app.config['SECRET_KEY'])
+        try:
+            token_user_email = serializer.loads(token, max_age=current_app.config['RESET_PASS_TOKEN_MAX_AGE'], salt=user.password_hash)
+        except(BadSignature, SignatureExpired):
+            return None
+        
+        if token_user_email != user.email:
+            return None
+        
+        return user

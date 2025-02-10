@@ -1,0 +1,127 @@
+body {
+    background-color: #f4f4f4;
+}
+
+#sidebar {
+    width: 100px;
+    position: fixed;
+    top: 52px; /* Adjust to match navbar height */
+    left: 0;
+    height: 100%;
+    background: #ffffff;
+    padding-top: 20px;
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+    box-shadow: 5px 10px 30px rgb(197, 197, 202);
+}
+
+#sidebar.expanded{
+    width: 200px;
+}
+
+#sidebar.expanded a{
+text-align: left;
+padding-left: 20px;
+}
+
+/* Text of letters */
+#sidebar a {
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    display: block;
+    text-decoration: none;
+    margin-top: 20px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: center;
+}
+
+#sidebar a:hover {
+    background: #495057;
+}
+
+/* Content */
+#content {
+    margin-left: 10px;
+    padding: 20px;
+}
+
+#header-left{
+    height: -20px;
+    margin-right: 10px;
+    padding: 20px;
+    font-size: 50px;
+}
+
+/* Adjust navbar */
+.navbar {
+    z-index: 1050; /* Ensure it stays on top */
+}
+
+#sidebar.expanded ~ #content{
+    margin-left: 100px;
+}
+
+#sidebar.expanded ~ #header{
+    margin-left: 100px;
+}
+.navbar-toggler{
+    display: block;
+    margin: 30px; 
+}
+
+.btn-create-service{
+    background-color: blue;
+    font-size: 17px;
+    font-style: italic;
+    width: auto; 
+}
+
+.pull-left{
+    font-size: 32px;
+}
+
+#header-left{
+    font-size: 20px;
+}
+
+.service-card {
+    background-color: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+  }
+/* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
+@media (max-width: 768px) {
+    #sidebar {
+        height: 100%;
+        position: absolute;
+        width: 100px;
+        top: 56px; /* Below navbar */
+        left: 0;
+        top: 52px; 
+        }
+
+    #sidebar.expanded{
+        width: 200px;
+    }
+
+    #sidebar.expanded ~ #content{
+        margin-left: 200px;
+    }
+    
+    #content {
+        margin-top: -50px;
+        margin-left: 80px;
+    }
+
+    #sidebar.expanded ~ #header{
+        margin-left: 200px;
+    }
+
+    #header{
+        margin-top: -50px;
+        margin-left: 80px;
+    }
+}

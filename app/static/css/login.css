@@ -1,0 +1,93 @@
+body {
+  /*background-image: url('https://cdn.prod.website-files.com/6009ec8cda7f305645c9d91b/647a62c28d2e511ffa08d350_647817f5c7d7212ae98065f5_b25debab.png');*/
+  background-position: center;
+  transform:scale(1.0);
+  -moz-transform:scale(1.0);
+  background-size: auto;
+  /*background-color: #999851;*/
+}
+
+/* For navbar background and border colors */
+.navbar-inverse {
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;   
+}
+
+/* Change navbar text colors for contrast */
+.navbar-inverse .navbar-brand,
+.navbar-inverse .navbar-nav > li > a {
+  color: #fff;   /* White text */
+}
+
+/* Login Button */
+.loginbutton {
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;
+  border-radius:30px;
+}
+
+/* create account Button */
+.createbutton{
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;
+  border-radius:30px;
+  margin-top: -27px;
+}
+
+/*The login form card*/
+.card-body {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.747);
+  background-color: white;
+}
+
+/*Forgot password button*/
+.form-group-forgotpass a {
+  color: #0866ff;
+  line-height: 3.3;
+}
+
+
+ /* Loyals Booking title*/
+.form-group-title{
+  font-size: 25px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+.loginblock{
+  min-width: 350px;
+  margin-top: 100px;
+  justify-content: center;
+  max-width: 350px;
+}
+
+/*Sign up button*/
+.card-footer{
+  line-height: 5.5;
+}
+
+.business-name{
+  line-height: 3;
+  font-size: 30px;
+}
+
+.footer {
+  position:absolute; bottom:-262px;
+  background-color: #333; /* Dark background */
+  color: #f1ecec;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+}
+
+.tawkto{
+  position:absolute; bottom:-262px;
+}
