@@ -19,10 +19,19 @@ body {
   color: #fff;   /* White text */
 }
 
-/* Login Button color global*/
-.btn-primary {
+/* Login Button */
+.loginbutton {
   background-color: #2f2f2f;
   border-color: #2f2f2f;
+  border-radius:30px;
+}
+
+/* create account Button */
+.createbutton{
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;
+  border-radius:30px;
+  margin-top: -27px;
 }
 
 /*The login form card*/
@@ -34,10 +43,11 @@ body {
 }
 
 /*Forgot password button*/
-.form-group-forgotpass{
-  line-height: 3.5;
-  color: rgb(8, 121, 219);
+.form-group-forgotpass a {
+  color: #0866ff;
+  line-height: 3.3;
 }
+
 
  /* Loyals Booking title*/
 .form-group-title{
@@ -54,8 +64,7 @@ body {
 .loginblock{
   min-width: 350px;
   margin-top: 100px;
-  margin-right: 450px;
-  margin-left: 400px;
+  justify-content: center;
   max-width: 350px;
 }
 
@@ -70,11 +79,15 @@ body {
 }
 
 .footer {
+  position:absolute; bottom:-262px;
   background-color: #333; /* Dark background */
   color: #f1ecec;
   text-align: center;
   padding: 10px 0;
   position: fixed;
-  bottom: -260px;
   width: 100%;
+}
+
+.tawkto{
+  position:absolute; bottom:-262px;
 }

@@ -63,8 +63,8 @@
               {{ form.remember_me.label(class="form-check-label") }}
             </div>
     
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block">
+            <!-- login button -->
+            <button type="submit" class="btn btn-primary btn-block loginbutton">
               {{ form.submit.label.text }}
             </button>
             
@@ -75,22 +75,25 @@
               {% endfor %}
             {% endif %}
           {% endwith %}
-  
 
             <!-- Forgot Password Added by Iyona-->
             <div class="form-group-forgotpass text-center"> 
                   <a href="{{ url_for('auth.reset_password_request') }}">Forgot Password?</a>
              </div>
+
+             <div class="card-footer text-center">
+              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg createbutton">Create New Account</a>
+            </div>
           </form>
         </div>
-        <div class="card-footer text-center">
-          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Create New Account</a>
-        </div>
+
       </div>
     </div>
   </div>
 </div>
+
   <!--Start of Tawk.to Script-->
+<div class="tawkto">
 <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
   (function(){
@@ -103,6 +106,7 @@
   })();
   </script>
   <!--End of Tawk.to Script-->
+</div>
 
 {% block footer %}
 <div class="footer">
