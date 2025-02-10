@@ -7,3 +7,4 @@ python-dotenv==1.0.0
 pytest==7.4.3
 waitress==2.1.2
 Flask-Bootstrap==3.3.7.1
+Flask-Mail==0.9.1
