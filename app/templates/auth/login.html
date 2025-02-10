@@ -35,7 +35,7 @@
 {% endblock %}
 
 {% block page_content %}
-
+<div class="container d-flex justify-content-center align-items-center vh-100">
       <div class="card mt-5 loginblock">
         <div class="text-center business-name">Loyals Booking</div>
         <div class="card-body">
@@ -89,6 +89,7 @@
       </div>
     </div>
   </div>
+</div>
   <!--Start of Tawk.to Script-->
 <script type="text/javascript">
   var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
@@ -102,4 +103,10 @@
   })();
   </script>
   <!--End of Tawk.to Script-->
+
+{% block footer %}
+<div class="footer">
+    <p>This would be the copy right area</p>
+</div>
+{% endblock %}
 {% endblock %}

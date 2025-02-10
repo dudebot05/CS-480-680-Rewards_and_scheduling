@@ -44,6 +44,13 @@ body {
   font-size: 25px;
 }
 
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
 .loginblock{
   min-width: 350px;
   margin-top: 100px;
@@ -60,4 +67,14 @@ body {
 .business-name{
   line-height: 3;
   font-size: 30px;
+}
+
+.footer {
+  background-color: #333; /* Dark background */
+  color: #f1ecec;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  bottom: -260px;
+  width: 100%;
 }
