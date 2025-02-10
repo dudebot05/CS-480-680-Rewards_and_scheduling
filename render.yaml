@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: booking-rewards-app
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python run.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.8
+      - key: FLASK_CONFIG
+        value: production
+      - key: SECRET_KEY
+        sync: false
+      - key: FLASKY_ADMIN
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: MAIL_SERVER
+        sync: false
+      - key: MAIL_PORT
+        sync: false
+      - key: MAIL_USERNAME
+        sync: false
+      - key: MAIL_PASSWORD
+        sync: false
+
+databases:
+  - name: booking-rewards-db
+    databaseName: booking_rewards
+    plan: free
