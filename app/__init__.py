@@ -11,10 +11,11 @@ login_manager.login_view = 'auth.login'
 bootstrap = Bootstrap()
 mail = Mail()
 
-def create_app(configName):
+def create_app():
     app = Flask(__name__)
-    app.config.from_object(config[configName])
-    config[configName].init_app(app)
+    app.config['SECRET_KEY'] = 'dev-key'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///booking.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
     login_manager.init_app(app)
