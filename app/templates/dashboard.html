@@ -46,10 +46,10 @@
   <button class="navbar-toggler" type="button" onclick="document.getElementById('sidebar').classList.toggle('expanded')">
     >
   </button>
-  <a href="#">Dashboard</a>
+  <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
   <a href="#">Rewards</a>           <!-- "sidebar a" in the css folder -->
   <a href="#">Clients</a>
-  <a href="#">My Services</a>
+  <a href="{{ url_for('auth.myservices') }}">My Services</a>
   <a href="{{ url_for('auth.logout') }}">Logout</a>
 </div>
 
@@ -57,8 +57,21 @@
 
 <!-- Main Content -->
 <div id="content">
-  <h2>Welcome to my Flask App</h2>
-  <p>This is the main content area.</p>
+</div>
+
+<!--
+  <div id="calendar">
+    {% for day in calendar_days %}
+    <div class="calendar-day">
+      <div>{{ day.date }}</div>
+      {% for event in day.events %}
+      <div class="event">{{ event.title }}</div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+-->
 </div>
 
     <!-- Bootstrap JS (Required for Collapse) -->
