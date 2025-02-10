@@ -1,13 +1,97 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
+{% block head %}
+  {{ super() }}
+  <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+{% endblock %}
+
 {% block title %}Login{% endblock %}
 
-{% block page_content %}
-<div class="page-header">
-    <h1>Login</h1>
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=""></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+                <li><a href=""></a></li>
+            </ul>
+        </div>
+    </div>
 </div>
-{{ wtf.quick_form(form) }}
-<br />
-<p class="text-left">or <a href="{{ url_for('auth.register') }}">Create New Account</a></p> 
+{% endblock %}
+
+{% block page_content %}
+
+      <div class="card mt-5 loginblock">
+        <div class="text-center business-name">Loyals Booking</div>
+        <div class="card-body">
+          <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <!-- Card Title -->
+            <div class="form-group-title text-center"> 
+             <p>Log in</p>
+            </div>
+            <!-- Username Field -->
+            <div class="form-group">
+              {{ form.username.label(class="form-control-label") }}
+              {{ form.username(class="form-control", placeholder="Enter your username") }}
+            </div>
+            
+            <!-- Password Field -->
+            <div class="form-group">
+              {{ form.password.label(class="form-control-label") }}
+              {{ form.password(class="form-control", placeholder="Enter your password") }}
+            </div>
+            
+            <!-- Remember Me Checkbox -->
+            <div class="form-group form-check">
+              {{ form.remember_me(class="form-check-input") }}
+              {{ form.remember_me.label(class="form-check-label") }}
+            </div>
+    
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary btn-block">
+              {{ form.submit.label.text }}
+
+            </button>
+
+            <!-- Forgot Password Added by Iyona-->
+            <div class="form-group-forgotpass text-center"> 
+                  <a href="{{ url_for('auth.forgotpass') }}">Forgot Password?</a>
+             </div>
+          </form>
+        </div>
+        <div class="card-footer text-center">
+          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Create New Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/67a302a1825083258e102c08/1ijac4hqq';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
 {% endblock %}
