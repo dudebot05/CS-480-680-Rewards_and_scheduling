@@ -62,6 +62,14 @@
               {{ form.remember_me(class="form-check-input") }}
               {{ form.remember_me.label(class="form-check-label") }}
             </div>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                <p style="color: green;">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
     
             <!-- Submit Button -->
             <button type="submit" class="btn btn-primary btn-block">
@@ -71,7 +79,7 @@
 
             <!-- Forgot Password Added by Iyona-->
             <div class="form-group-forgotpass text-center"> 
-                  <a href="{{ url_for('auth.forgotpass') }}">Forgot Password?</a>
+                  <a href="{{ url_for('auth.reset_password_request') }}">Forgot Password?</a>
              </div>
           </form>
         </div>
