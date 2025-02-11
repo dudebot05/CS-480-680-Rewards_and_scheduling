@@ -99,3 +99,7 @@ def admin():
 @auth.route('/myservices', methods=['GET', 'POST'])
 def myservices():
     return render_template('auth/myservices.html')
+
+@auth.route('/profilesettings', methods=['GET', 'POST'])
+def profilesettings():
+    return render_template('auth/profilesettings.html')
