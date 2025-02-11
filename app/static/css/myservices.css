@@ -69,9 +69,11 @@ padding-left: 20px;
     display: block;
     margin: 30px; 
 }
+.btn-primary{
+    background-color: blue;
+}
 
 .btn-create-service{
-    background-color: blue;
     font-size: 17px;
     font-style: italic;
     width: auto; 
