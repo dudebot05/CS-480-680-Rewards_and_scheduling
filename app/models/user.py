@@ -15,6 +15,7 @@ class User(UserMixin, db.Model):
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
     is_active = db.Column(db.Boolean, default=True)
+    is_confirmed = db.Column(db.Boolean, default=False)
     reward_points = db.Column(db.Integer, default=0)
     bookings = db.relationship('Booking', backref='user', lazy='dynamic')
     reward_transactions = db.relationship('RewardTransaction', backref='user', lazy='dynamic')
