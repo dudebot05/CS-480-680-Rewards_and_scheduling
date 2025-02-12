@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}New User{% endblock %}
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+{% endblock %}
+
+{% block title %}Register{% endblock %}
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -29,10 +34,43 @@
 {% endblock %}
 
 {% block page_content %}
-<div class="page-header">
-    <h1>New User</h1>
-</div>
-{{ wtf.quick_form(form) }}
-<br />
-<p class="text-left">Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+  <div class="card mt-5 loginblock">
+    <div class="text-center business-name">Loyals Booking</div>
+    <div class="card-body">
+      <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group-title text-center"> 
+         <p>Sign Up</p>
+        </div>
+        
+        <div class="form-group">
+          {{ form.username.label(class="form-control-label") }}
+          {{ form.username(class="form-control", placeholder="Enter your username") }}
+        </div>
+
+        <div class="form-group">
+          {{ form.email.label(class="form-control-label") }}
+          {{ form.email(class="form-control", placeholder="Enter your email") }}
+        </div>
+        
+        <div class="form-group">
+          {{ form.password.label(class="form-control-label") }}
+          {{ form.password(class="form-control", placeholder="Enter your password") }}
+        </div>
+        
+        <div class="form-group">
+          {{ form.confirm_password.label(class="form-control-label") }}
+          {{ form.confirm_password(class="form-control", placeholder="Confirm your password") }}
+        </div> 
+        
+        <button type="submit" class="btn btn-primary btn-block">
+          {{ form.submit.label.text }}
+        </button>
+      </form>
+    </div>
+    <div class="card-footer text-center">
+      <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+    </div>
+  </div>
 {% endblock %}

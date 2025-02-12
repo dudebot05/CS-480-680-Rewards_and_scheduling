@@ -11,6 +11,8 @@ body {
 .navbar-inverse {
   background-color: #2f2f2f;
   border-color: #2f2f2f;   
+  background-color: #2f2f2f;
+  border-color: #2f2f2f;   
 }
 
 /* Change navbar text colors for contrast */
@@ -77,6 +79,7 @@ body {
   line-height: 3;
   font-size: 30px;
 }
+
 
 .footer {
   position:absolute; bottom:-262px;
