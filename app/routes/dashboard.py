@@ -7,6 +7,11 @@ from flask_login import login_required, current_user
 def dashboard():
     return render_template('dashboard.html')
 
+@main.route('/rewards')
+@login_required
+def rewards():
+    return render_template('rewards.html')
+
 @main.route('/')
 def index():
     return redirect(url_for('auth.login'))

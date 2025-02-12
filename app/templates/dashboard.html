@@ -47,7 +47,7 @@
     >
   </button>
   <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
-  <a href="#">Rewards</a>           <!-- "sidebar a" in the css folder -->
+  <a href="{{ url_for('main.rewards') }}">Rewards</a>           <!-- "sidebar a" in the css folder -->
   <a href="#">Clients</a>
   <a href="{{ url_for('auth.myservices') }}">My Services</a>
   <a href="{{ url_for('auth.logout') }}">Logout</a>
