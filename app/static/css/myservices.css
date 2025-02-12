@@ -46,9 +46,9 @@ padding-left: 20px;
     padding: 20px;
 }
 
-#header{
+#header-left{
     height: -20px;
-    margin-left: 10px;
+    margin-right: 10px;
     padding: 20px;
     font-size: 50px;
 }
@@ -65,10 +65,58 @@ padding-left: 20px;
 #sidebar.expanded ~ #header{
     margin-left: 100px;
 }
+
 .navbar-toggler{
     display: block;
     margin: 30px; 
 }
+.btn-primary{
+    background-color: blue;
+}
+.searchbar{
+   margin-top: 16px; 
+}
+
+.btn-create-service{
+    font-size: 17px;
+    font-style: italic;
+    width: auto;
+
+}
+
+.pull-left{
+    font-size: 32px;
+}
+
+#header-left{
+    font-size: 20px;
+}
+
+.service-card {
+    background-color: white;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 10px;
+    
+  }
+.card-body{
+    max-width: auto;
+}
+
+  .service-title{
+    font-size: large;
+  }
+
+  .service-description{
+    font-size: small;
+  }
+
+  .service-price{
+    font-size: Large;
+    margin-top: -30px;
+  }
+  
 
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 768px) {
@@ -102,6 +150,4 @@ padding-left: 20px;
         margin-top: -50px;
         margin-left: 80px;
     }
-
-
 }

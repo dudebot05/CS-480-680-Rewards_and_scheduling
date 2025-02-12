@@ -122,3 +122,7 @@ def reset_password(token, user_id):
 @auth.route('/admin', methods=['GET', 'POST'])
 def admin():
     return render_template('auth/admin.html')
+
+@auth.route('/myservices', methods=['GET', 'POST'])
+def myservices():
+    return render_template('auth/myservices.html')
