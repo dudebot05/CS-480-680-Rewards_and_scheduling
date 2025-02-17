@@ -37,6 +37,14 @@
 {% block page_content%}
 <header id="header">Please confirm account</header>
 
+{% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                <p style="color: green;">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
 <p>
     Didn't get the email?
     <a href="{{ url_for('main.resend') }}">Resend</a>.

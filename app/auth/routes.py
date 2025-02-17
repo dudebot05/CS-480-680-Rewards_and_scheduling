@@ -55,7 +55,7 @@ def register():
     return render_template('auth/register.html', form=form)
 
 def send_validate_account_email(user):
-    validate_email_url = url_for('auth.reset_password', token=user.generate_password_reset_token(), user_id=user.id, _external=True)
+    validate_email_url = url_for('auth.confirm_email', token=user.generate_password_reset_token(), user_id=user.id, _external=True)
     email_body = render_template_string(validate_email_html_content, validate_email_url=validate_email_url)
     message = EmailMessage(subject='Validate Your Account', body=email_body, to=[user.email])
     message.content_subtype = 'html'
@@ -64,7 +64,7 @@ def send_validate_account_email(user):
 @auth.route('/confirm/<token>/<int:user_id>')
 @login_required
 def confirm_email(token, user_id):
-    if current_user.is_confirmed:
+    if current_user.is_confirmed() == True:
         flash('Account already confirmed.')
         return redirect(url_for('main.dashboard'))
     user = User.validate_reset_password_token(token, user_id)
@@ -72,7 +72,7 @@ def confirm_email(token, user_id):
     if not user:
         flash('The confirmation link is invalid or has expired')
     else:
-        user.is_confirmed = True
+        user.confirm_account()
         db.session.commit()
         flash('Your account has been confirmed.')
     return redirect(url_for('main.dashboard'))

@@ -14,7 +14,6 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(64), unique=True, index=True)
     username = db.Column(db.String(64), unique=True, index=True)
     password_hash = db.Column(db.String(128))
-    is_active = db.Column(db.Boolean, default=True)
     is_confirmed = db.Column(db.Boolean, default=False)
     reward_points = db.Column(db.Integer, default=0)
     bookings = db.relationship('Booking', backref='user', lazy='dynamic')
@@ -28,6 +27,12 @@ class User(UserMixin, db.Model):
     @password.setter
     def password(self, password):
         self.password_hash = generate_password_hash(password)
+
+    def confirm_account(self):
+        self.is_confirmed = True
+
+    def is_confirmed(self):
+        return self.is_confirmed
 
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)

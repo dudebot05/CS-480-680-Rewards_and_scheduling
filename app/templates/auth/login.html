@@ -75,14 +75,6 @@
             <button type="submit" class="btn btn-primary btn-block loginbutton">
               {{ form.submit.label.text }}
             </button>
-            
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-              {% for message in messages %}
-              <p style="color: green;">{{ message }}</p>
-              {% endfor %}
-            {% endif %}
-          {% endwith %}
 
             <!-- Forgot Password Added by Iyona-->
             <div class="form-group-forgotpass text-center"> 
