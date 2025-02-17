@@ -102,4 +102,8 @@ def myservices():
 
 @auth.route('/profilesettings', methods=['GET', 'POST'])
 def profilesettings():
-    return render_template('auth/profilesettings.html')
+    username=current_user.username
+    account='Customer'
+    if current_user.is_client():
+        account='Owner'
+    return render_template('auth/profilesettings.html', username=username, account=account)

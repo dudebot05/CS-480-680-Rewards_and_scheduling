@@ -58,10 +58,13 @@
   <div class="container align-items-center">
     <div class="card">
       <div class="card-body text-center">
-        <img class="card-img-top" src="/app/assets/DefaultProfile.png" alt="Profile Picture">
-        <h5 class="card-title">[Username]</h5>
-        <p class="card-text text-left">Profile type: [Owner/Client]<br>Plan: [Trial/Basic/Premium]<br></p>
-        <a href="#" class="btn btn-primary btn-lg editbutton">Edit profile</a>
+        <img class="card-img-top" src="{{ url_for('static', filename='images/DefaultProfile.png') }}" alt="Profile Picture">
+        <h5 class="card-title">{{ username }}</h5>
+        <p class="card-text">Profile type: {{ account }}</p>
+        <a href="{{ url_for('auth.myservices') }}" class="btn btn-primary editbutton">Services<br></a>
+        <div class="row">
+          <a href="#" class="btn btn-primary btn-lg editbutton">Edit profile</a>
+        </div>
       </div>
     </div>
   </div>
