@@ -104,6 +104,10 @@ padding-left: 20px;
     margin-top: -40px;
     font-weight: bold;
 }
+
+#Modal{ 
+    margin-top: 280px;
+  }
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 1911px) {
     /* test */
