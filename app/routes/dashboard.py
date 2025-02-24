@@ -1,4 +1,3 @@
-from functools import wraps
 from . import main
 from flask import flash, render_template, redirect, url_for
 from flask_login import login_required, current_user
@@ -16,11 +15,10 @@ def check_is_confirmed(func):
 
 @main.route('/dashboard', methods=['GET', 'POST'])
 @login_required
-@check_is_confirmed
 def dashboard():
     return render_template('dashboard.html')
 
-@main.route('/inactive_accounts')
+@main.route('/rewards')
 @login_required
 def inactive():
     if current_user.is_confirmed() == True:
