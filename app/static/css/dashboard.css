@@ -104,10 +104,33 @@ padding-left: 20px;
     margin-top: -40px;
     font-weight: bold;
 }
-
+.card-body{
+    max-width: auto;
+}
 #Modal{ 
-    margin-top: 280px;
+    margin-top: 190px;
   }
+
+.modal-title{
+    font-size: 20px;
+}
+.modal-header{
+    justify-content: center;
+}
+.closex{
+    margin-top: -25px;
+}
+.mb-3{
+    justify-content: space-around; 
+}
+
+.form-select {
+    padding: 10px;
+    border-radius: 5px;
+}
+.Availabilityoption{
+    right: 400px;
+}
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 1911px) {
     /* test */

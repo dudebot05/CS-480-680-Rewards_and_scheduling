@@ -82,15 +82,32 @@
           <button type="button" class="closex pull-right" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
+        </div>
+      <div class="modal-body">
+        <form id="SetAvailabilityForm">
+          <div class="mb-3">
+            <div class="d-flex align-items-center">
+              <input type="checkbox" id="thisWeek" class="form-check-input me-2">
+              <label for="thisWeek" class="form-check-label fw-bold">This Week</label>
+            </div>
+          </div>
+            <div class="container Availabilityoption">
+                <label for="thisWeek" class="form-check-label fw-bold">Availability</label>
+                <select class="form-select">
+                  <option>From</option>
+                </select>
+                <select class="form-select">
+                  <option>To</option>
+                </select>
+              </div>
+            </div>
+        </form>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary addservice">Save</button>
+        </div>
       </div>
-          <!-- the fields to create a serivce -->
-
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-primary addservice">Save</button>
     </div>
-  </div>
 </div>
 </div>
     <!-- Bootstrap JS (Required for Collapse) -->
