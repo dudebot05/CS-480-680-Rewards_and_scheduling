@@ -15,6 +15,7 @@ body {
     position: fixed;
     top: 52px; /* Adjust to match navbar height */
     left: 0;
+    bottom: auto;
     height: 100%;
     background: #ffffff;
     padding-top: 20px;
@@ -131,10 +132,15 @@ padding-left: 20px;
 .Availabilityoption{
     right: 400px;
 }
+
+.fc-col-header-cell{
+    font-size: large;
+}
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 1911px) {
     /* test */
     
+
     #sidebar {
         height: 100%;
         position: absolute;
@@ -154,7 +160,7 @@ padding-left: 20px;
     
     #content {
         margin-top: -50px;
-        margin-left: 80px;
+        margin-left: 100px;
     }
 
     #sidebar.expanded ~ #header{
