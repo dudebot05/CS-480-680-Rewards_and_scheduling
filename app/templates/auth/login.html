@@ -12,18 +12,22 @@
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
     <div class="container">
+
+      <!-- Commenting this out becuase it seems useless for now
         <div class="navbar-header">
+          
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
+                <span class="icon-bar">Test</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href=""></a>
         </div>
+        -->
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li><a href=""></a></li>
+                <li><a href=""></a>Test1</li>
                 <li><a href=""></a></li>
                 <li><a href=""></a></li>
                 <li><a href=""></a></li>
@@ -35,7 +39,7 @@
 {% endblock %}
 
 {% block page_content %}
-
+<div class="container d-flex justify-content-center align-items-center vh-100">
       <div class="card mt-5 loginblock">
         <div class="text-center business-name">Loyals Booking</div>
         <div class="card-body">
@@ -71,22 +75,46 @@
               {% endif %}
             {% endwith %}
     
-            <!-- Submit Button -->
-            <button type="submit" class="btn btn-primary btn-block">
+            <!-- login button -->
+            <button type="submit" class="btn btn-primary btn-block loginbutton">
               {{ form.submit.label.text }}
-
             </button>
 
             <!-- Forgot Password Added by Iyona-->
             <div class="form-group-forgotpass text-center"> 
                   <a href="{{ url_for('auth.reset_password_request') }}">Forgot Password?</a>
              </div>
+
+             <div class="card-footer text-center">
+              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg createbutton">Create New Account</a>
+            </div>
           </form>
         </div>
-        <div class="card-footer text-center">
-          <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg">Create New Account</a>
-        </div>
+
       </div>
     </div>
+  </div>
 </div>
+
+  <!--Start of Tawk.to Script-->
+<div class="tawkto">
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/67a302a1825083258e102c08/1ijac4hqq';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+  <!--End of Tawk.to Script-->
+</div>
+
+{% block footer %}
+<div class="footer">
+    <p>This would be the copy right area</p>
+</div>
+{% endblock %}
 {% endblock %}

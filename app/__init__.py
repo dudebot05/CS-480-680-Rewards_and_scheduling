@@ -24,9 +24,9 @@ def create_app(configName):
     with app.app_context():
         db.create_all()
 
-    from .auth import auth as auth_blueprint
-    from .routes import main as main_blueprint
-    app.register_blueprint(main_blueprint)
-    app.register_blueprint(auth_blueprint)
+    from .auth import auth as auth_bluprint
+    from .routes import main as main_bluprint
+    app.register_blueprint(main_bluprint)
+    app.register_blueprint(auth_bluprint)
 
     return app

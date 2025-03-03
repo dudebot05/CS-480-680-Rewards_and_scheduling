@@ -1,6 +1,5 @@
-from flask_sqlalchemy import SQLAlchemy
 from __future__ import annotations
-
+from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 from .user import User  # noqa: F401
