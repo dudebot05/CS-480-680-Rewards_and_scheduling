@@ -3,11 +3,13 @@ body {
 }
 
 #header{
+    background-color: #fecef6;
     text-align: center !important;
     height: -20px;
     padding-bottom: 50px;
     justify-content: center;
     display: flex !important;
+
 }
 
 #sidebar {
@@ -133,9 +135,9 @@ padding-left: 20px;
     right: 400px;
 }
 
-.fc-col-header-cell{
-    font-size: large;
-}
+#content{
+    }
+
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 1911px) {
     /* test */
@@ -174,6 +176,19 @@ padding-left: 20px;
         display: flex;
         justify-content: center;
     }
+
+    /* EVERYTHING DEALING WITH THE CALENDAR ONLY */
+:root {
+    --fc-button-bg-color: BLUE;
+    --fc-border-color: #b3b0b0;
+    .fc-daygrid-day-number{
+        color: #495057;
+    } 
+    .fc-col-header-cell-cushion{
+        color: #495057;
+        font-size: small;
+    }
+}
 
 
 }
