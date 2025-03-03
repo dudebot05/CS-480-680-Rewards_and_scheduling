@@ -11,6 +11,7 @@ from ..static.login import LoginForm
 from ..static.register import RegistrationForm
 from ..static.reset_password_form import ResetPasswordForm
 from ..static.passwordreset import PasswordResetForm
+from ..static.edit import EditForm
 from ..auth.reset_pass_email_content import reset_password_email_html_content
 from ..auth.validate_email_content import validate_email_html_content
 
@@ -126,3 +127,25 @@ def admin():
 @auth.route('/myservices', methods=['GET', 'POST'])
 def myservices():
     return render_template('auth/myservices.html')
+
+@auth.route('/profilesettings', methods=['GET', 'POST'])
+def profilesettings():
+    username=current_user.username
+    account='Customer'
+    if current_user.is_client():
+        account='Owner'
+    return render_template('auth/profilesettings.html', username=username, account=account)
+
+@auth.route('/editprofilesettings', methods=['GET', 'POST'])
+def editprofilesettings():
+    user = current_user
+    account='Customer'
+    form = EditForm()
+    if form.validate_on_submit():
+        user.username=form.username.data
+        account=form.account_type.data
+        db.session.commit()
+        flash('Profile changes saved.')
+        return redirect(url_for('auth.profilesettings'))
+
+    return render_template('auth/editprofilesettings.html', form=form)
