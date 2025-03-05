@@ -2,13 +2,13 @@ body {
     background-color: #f4f4f4;
 }
 
-#header{
+#header h1{
     text-align: center !important;
-    height: -20px;
-    padding-bottom: 50px;
+    height: -60px;
+    padding-bottom: 80px;
     justify-content: center;
     display: flex !important;
-
+    margin-top: -30px
 }
 
 #sidebarfullscreen {
@@ -132,7 +132,7 @@ padding-left: 20px;
 }
 
 #calendar{
-margin-top: -30px;
+margin-top: -110px;
 
 }
 
