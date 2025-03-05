@@ -8,9 +8,37 @@ body {
     padding-bottom: 80px;
     justify-content: center;
     display: flex !important;
-    margin-top: -30px
+    margin-top: -45px;
+    
 }
 
+#containerQuickInsight{
+    position: absolute;
+    right: 100px;
+    display: flex !important;
+    top: 111px;
+    
+}
+
+#quickinsightTitle{
+    font-size: 30px;
+
+}
+
+
+.card{
+    position: absolute;
+    bottom: -150px;
+    background-color: aquamarine;
+    border-radius: 30px;
+}
+
+#main{ 
+    position: absolute;
+    left: 120px;
+    width: 40%;
+    bottom: -29px;
+}
 #sidebarfullscreen {
     width: 200px;
     position: fixed;
@@ -87,11 +115,6 @@ padding-left: 20px;
 
 .month-year{
     text-align: center;
-}
-
-.main-content{
-    width: 350px;
-    justify-content: center;
 }
 
 .btn-availability{
@@ -194,6 +217,7 @@ margin-top: -110px;
 
     .fc-col-header { /* MIGHT BE USELESS??? */
         border-radius: 16px !important;
+        
       }
       
     .fc-scrollgrid { /* Formatting grid for top and left */
@@ -201,9 +225,13 @@ margin-top: -110px;
       }
       .fc-scrollgrid-section > th {/* Formatting grid for right*/
         border-radius: 0px 16px 0px 0px !important;
+        border-right: 5px solid rgb(8, 0, 0);
+        
       }
       .fc-scrollgrid-section > td {/* Formatting grid for bottom right*/
         border-radius: 0px 0px 16px 16px !important;
+        border-right: 5px solid rgb(8, 0, 0);
+        
       }
 }
 
