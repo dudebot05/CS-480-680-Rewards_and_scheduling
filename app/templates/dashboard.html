@@ -48,36 +48,21 @@
   <div class="container-fluid"></div>
 </nav>
   <!-- Sidebar -->
-<div id="sidebar">
-  <button class="navbar-toggler" type="button" onclick="document.getElementById('sidebar').classList.toggle('expanded')">
-    >
-  </button>
-  <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
-  <a href="{{ url_for('main.rewards') }}">Rewards</a>           <!-- "sidebar a" in the css folder -->
-  <a href="#">Clients</a>
-  <a href="{{ url_for('auth.myservices') }}">My Services</a>
-  <a href="{{ url_for('auth.logout') }}">Logout</a>
+<div id="sidebarfullscreen">
+  <p id="sidebartitle">Loyals Booking</p>
+  <a href="{{ url_for('main.dashboard') }}"> &#x1F4BB; Dashboard</a>
+  <a href="{{ url_for('main.rewards') }}"> &#x1F381; Rewards</a>           <!-- "sidebar a" in the css folder -->
+  <a href="#">&#x1F465; Clients</a>
+  <a href="{{ url_for('auth.myservices') }}">&#x1F50D; My Services</a>
+  <a href="{{ url_for('auth.logout') }}">&#x1F44B; Logout</a>
 </div>
 
 <!-- header -->
 <header id="header">
 <h1>Dashboard</h1>
 </header>
-<!--<button type="button" class="pull-right btn btn-primary btn-block btn-availability" data-toggle="modal" data-target="#Modal">+ Set Availability</button>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray;width:100%;"></hr>-->
-<!-- Main Content 
-  <div class="content">-->
-    <!-- This will control the arrows and month header
-    <div class="container main-content">
-      <div class="row">
-        <div class="calendar_header">
-          <button class="col-6 switch-month switch-left"> <span class="glyphicon glyphicon-menu-left"></span></button>
-           <h2 class="col-6 month-year">Month Year</h2>
-          <button class="col-6 switch-month switch-right "> <span class="glyphicon glyphicon-menu-right"></span></i></button>
-        </div>
-      </div>
-    </div>
-  </div>
+<div id="content">
+  <button type="button" class="pull-right btn btn-primary btn-block btn-availability" data-toggle="modal" data-target="#Modal">+ Set Availability</button>
   <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -86,27 +71,64 @@
           <button type="button" class="closex pull-right" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-      </div>-->
-          <!-- the fields to create a serivce 
-
-
+      </div>
+          <!-- the fields to create a serivce -->
+  
+  
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
       <button type="submit" class="btn btn-primary addservice">Save</button>
     </div>
   </div>
-</div>-->
-<div id="content">
+  </div>
+</div>
+
 <div id="calendar">
 <script>
   let calendarEl = document.getElementById('calendar');
-
   let calendar = new FullCalendar.Calendar(calendarEl, {
-
+    editable: true,
+    selectable: true,
+    selectHelper: true,
+    
+    eventClick: function(calEvent, jsEvent, view) 
+           {
+            
+            var modalElement = document.getElementById('myModal');
+            var modal = new bootstrap.Modal(modalElement);
+            $('modal').modal('show');
+           },
+           
+    height: 600,
+    events: [ 
+    { // this object will be "parsed" into an Event Object 
+        title: 'The Title', // a property! 
+        start: '2025-03-01', // a property! 
+        end: '2018-03-02' // a property! 
+    }
+ ]
+ 
   });
 
   calendar.render();
 </script>
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+  
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Create Event</h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+   </div>
 </div>
 </div>
     <!-- Bootstrap JS (Required for Collapse) -->
