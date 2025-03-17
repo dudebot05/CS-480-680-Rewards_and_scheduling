@@ -2,6 +2,7 @@ from functools import wraps
 
 from app.models import db
 from app.static.edit import EditForm
+from app.static.pricing import PriceForm
 from . import main
 from flask import flash, render_template, redirect, url_for
 from flask_login import login_required, current_user
@@ -70,6 +71,15 @@ def editprofilesettings():
         return redirect(url_for('main.profilesettings'))
 
     return render_template('editprofilesettings.html', form=form)
+
+@main.route('/pricing')
+@login_required
+def pricing():
+    form = PriceForm()
+    if form.validate_on_submit():
+        pricing=form.billing_type.data
+        #return redirect(url_for(main.payment))
+    return render_template('pricing.html', form=form)
 
 @main.route('/')
 def index():
