@@ -43,7 +43,8 @@
           </div>
               <!-- the fields to create a serivce -->
         <div class="modal-body">
-          <form id="createServiceForm">
+          {{ wtf.quick_form(form) }}
+          <!--<form method="POST" action="" id="createServiceForm">
             <div class="mb-3">
               <label for="serviceName" class="form-label">Service Name</label>
               <input type="text" class="form-control" id="serviceName" required>
@@ -56,7 +57,7 @@
               <label for="servicePrice" class="form-label">Price</label>
               <input step="0.01" type="number" class="form-control" id="servicePrice" required>
             </div>
-          </form>
+          </form>-->
         </div>
   
         <div class="modal-footer">
@@ -83,13 +84,15 @@
         <div class="service-card">
 
              <!-- this controls service card text as a whole  -->
+          {% for reward in rewardsList %}
           <div class="card-body">
-            <h5 class="service-title">Hair Dressing</h5>
+            <h5 class="service-title">{{ reward.title }}</h5>
 
                <!-- this controls the description and price row -->
-            <div class="service-description text-muted mb-0">Office ipsum you must be muted. Horse re-inventing six design if cross beef.</div>
-            <div class="service-price fw-bold pull-right">$30</div>       
+            <div class="service-description text-muted mb-0">{{ reward.description }}</div>
+            <div class="service-price fw-bold pull-right">{{ reward.points }}</div>       
           </div>
+          {% endfor %}
         </div>
       </div>
     </div>

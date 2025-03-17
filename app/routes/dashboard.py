@@ -1,7 +1,9 @@
 from functools import wraps
 
-from app.models import db
+from .. import db
+from app.models.rewards import RewardTransaction
 from app.static.edit import EditForm
+from app.static.rewards import RewardsForm
 from . import main
 from flask import flash, render_template, redirect, url_for
 from flask_login import login_required, current_user
@@ -44,10 +46,23 @@ def resend():
 def myservices():
     return render_template('myservices.html')
 
-@main.route('/rewards')
+@main.route('/rewards', methods=['GET', 'POST'])
 @login_required
 def rewards():
-    return render_template('rewards.html')
+    rewardsList = RewardTransaction.query.filter_by(user_id=current_user.id).all()
+    form = RewardsForm()
+    if form.validate_on_submit():
+        reward = RewardTransaction(
+            user_id=current_user.id,
+            title=form.title.data,
+            points=form.points.data,
+            transaction_type=form.service_type.data,
+            description=form.description.data
+        )
+        db.session.add(reward)
+        db.session.commit()
+        return redirect(url_for('main.rewards'))
+    return render_template('rewards.html', form=form, rewardsList=rewardsList)
 
 @main.route('/profilesettings', methods=['GET', 'POST'])
 def profilesettings():
