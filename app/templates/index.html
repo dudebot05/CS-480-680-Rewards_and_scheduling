@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
 {% block title %}Welcome{% endblock %}
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
+{% endblock %}
 
 {% block content %}
 <div class="container">
