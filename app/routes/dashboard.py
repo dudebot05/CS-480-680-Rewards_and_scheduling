@@ -1,5 +1,6 @@
 from functools import wraps
-
+from app.models.services import Service
+from app.static.forms.myservices import ServiceForm
 from .. import db
 from app.models.rewards import RewardTransaction
 from app.static.edit import EditForm
@@ -44,6 +45,9 @@ def resend():
 
 @main.route('/myservices', methods=['GET', 'POST'])
 def myservices():
+    form = ServiceForm()
+    if form.validate_on_submit():
+        service = Service()
     return render_template('myservices.html')
 
 @main.route('/rewards', methods=['GET', 'POST'])
@@ -88,4 +92,4 @@ def editprofilesettings():
 
 @main.route('/')
 def index():
-    return redirect(url_for('auth.login'))
+    return render_template('index.html')
