@@ -3,12 +3,16 @@ body {
 }
 
 #header h1{
-    text-align: center !important;
+    text-align: left !important;
     height: -60px;
     padding-bottom: 80px;
-    justify-content: center;
+    justify-content: left;
     display: flex !important;
-    margin-top: -45px;
+    margin-top: -26px;
+    font-family: "Open Sans", sans-serif;
+    margin-left: 40px;
+    font-size: 25px;
+    font-weight: bold;
     
 }
 
@@ -16,7 +20,7 @@ body {
     position: absolute;
     left: 226px;
     display: flex !important;
-    top: 250px;
+    top: 290px;
 }
 
 #quickinsightTitle{
@@ -37,23 +41,49 @@ body {
     background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
     border-radius: 30px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 120px;
 }
 
 .card{
     position: absolute;
-    bottom: -150px;
+    justify-content: space-around;
+    bottom: -220px;
     background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
     border-radius: 30px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 120px;
     
 }
 
+.card3{
+    position: absolute;
+    justify-content: space-around;
+    bottom: -370px;
+    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 120px;
+    
+}
+.card-title{
+    color: rgb(19, 19, 19);
+    font-size: 47px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card-text{
+    color: rgb(19, 19, 19);
+    
+}
 #main{ 
+    
     position: absolute;
     right: 100px;
     width: 70%;
     bottom: -29px;
     top: 240px;
+
 }
 #sidebarfullscreen {
     width: 200px;
@@ -62,11 +92,11 @@ body {
     left: 0;
     bottom: auto;
     height: 100%;
-    background: #ffffff;
+    background: #fefefe;
     padding-top: 20px;
     transition: all 0.3s ease-in-out;
     overflow-y: auto;
-    box-shadow: 5px 10px 30px rgb(197, 197, 202);
+    box-shadow: 5px 10px 30px rgb(159, 159, 161);
 }
 
 #sidebar.expanded{
@@ -82,6 +112,10 @@ padding-left: 20px;
     font-size: 20px;
     color: rgb(0, 0, 0);
     text-align: center;
+    margin-top: 35px;
+    font-weight: bold;
+    font-family: "Boldonse", system-ui;
+        
 }
 /* Text of letters */
 #sidebarfullscreen a, p {
@@ -176,10 +210,11 @@ margin-left: 80px;
 
 }
 
+
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 800px) {
     /* test */
-    .card, .card2, #quickinsightTitle{
+    .card, .card2, .card3, #quickinsightTitle{
         display: none;
 
     }
@@ -227,6 +262,11 @@ margin-left: 80px;
 :root {
     --fc-button-bg-color: BLUE;
     --fc-border-color: #b3b0b0;
+
+    .fc-toolbar-title{
+        font-size: 18px;
+        font-family: "Open Sans", sans-serif; 
+    }
     .fc-daygrid-day-number{
         color: #495057;
     } 
@@ -235,26 +275,48 @@ margin-left: 80px;
         font-size: small;
     }
 
+    .fc-toolbar-chunk{
+        margin-top: 20px;
+    }
+    .fc-event-title{
+        font-size: 15px;
+        color: #ffffff;
+    }
+    .fc-prev-button, .fc-next-button{
+        background-color: #323232;
+        border-color: #323232;
+    }
+    .fc-daygrid-event{
+        background-color: #323232;
+        border-color: #323232;
+    }
     .fc-col-header { /* MIGHT BE USELESS??? */
         border-radius: 16px !important;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-        
-      }
+    }
+
+    .fc-scrollgrid-sync-inner{
+        margin-top: 25px;
+    }
+    .fc-col-header-cell-cushion{
+        top: -70px;
+    }
       
     .fc-scrollgrid { /* Formatting grid for top and left */
         border-radius: 16px !important;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      }
+    }
       .fc-scrollgrid-section > th {/* Formatting grid for right*/
         border-radius: 0px 16px 0px 0px !important;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         
-      }
+   }
       .fc-scrollgrid-section > td {/* Formatting grid for bottom right*/
         border-radius: 0px 0px 16px 16px !important;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
         
       }
+
 }
 
 
