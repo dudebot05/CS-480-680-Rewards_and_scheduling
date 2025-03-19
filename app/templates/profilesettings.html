@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Profile Settings{% endblock %}
+
+
+{% block head %}
+  {{ super() }}
+  <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/profilesettings.css') }}?v=4">
+{% endblock %}
+
+
+{% block page_content %}
+
+
+<!-- Main Content -->
+<div id="content">
+  <div class="container align-items-center">
+    <div class="card">
+      <div class="card-body text-center">
+        <img class="card-img-top" src="{{ url_for('static', filename='images/DefaultProfile.png') }}" alt="Profile Picture">
+        <h5 class="card-title">{{ username }}</h5>
+        <p class="card-text">Profile type: {{ account }}</p>
+        <a href="{{ url_for('main.myservices') }}" class="btn btn-primary editbutton">Services<br></a>
+        <div class="row">
+          <a href="{{ url_for('main.editprofilesettings') }}" class="btn btn-primary btn-lg editbutton">Edit profile</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

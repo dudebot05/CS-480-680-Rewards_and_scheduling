@@ -7,10 +7,11 @@ from . import auth
 from .login_manager import load_user
 from .. import db, login_manager
 from ..models.user import User
-from ..static.login import LoginForm
-from ..static.register import RegistrationForm
-from ..static.reset_password_form import ResetPasswordForm
-from ..static.passwordreset import PasswordResetForm
+from ..static.forms.login import LoginForm
+from ..static.forms.register import RegistrationForm
+from ..static.forms.reset_password_form import ResetPasswordForm
+from ..static.forms.passwordreset import PasswordResetForm
+from ..static.edit import EditForm
 from ..auth.reset_pass_email_content import reset_password_email_html_content
 from ..auth.validate_email_content import validate_email_html_content
 
@@ -123,6 +124,3 @@ def reset_password(token, user_id):
 def admin():
     return render_template('auth/admin.html')
 
-@auth.route('/myservices', methods=['GET', 'POST'])
-def myservices():
-    return render_template('auth/myservices.html')

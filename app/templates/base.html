@@ -24,6 +24,22 @@
         </div>
     </div>
 </div>
+
+<nav class="navbar fixed-top">
+    <div class="container-fluid"></div>
+</nav>
+
+<div id="sidebar">
+    <button class="navbar-toggler" type="button" onclick="document.getElementById('sidebar').classList.toggle('expanded')"></button>
+    <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
+    <a href="{{ url_for('main.profilesettings') }}">Profile</a>
+    <a href="{{ url_for('main.pricing') }}">Pricing</a>
+    <a href="{{ url_for('main.rewards') }}">Rewards</a>           <!-- "sidebar a" in the css folder -->
+    <a href="#">Clients</a>
+    <a href="{{ url_for('main.myservices') }}">My Services</a>
+    <a href="{{ url_for('auth.logout') }}">Logout</a>
+  
+  </div>
 {% endblock %}
 
 {% block content %} 

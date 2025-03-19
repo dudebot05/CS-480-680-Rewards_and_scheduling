@@ -1,15 +1,14 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, DateTimeField, SelectField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, DateTimeField, SelectField, TextAreaField, SubmitField, IntegerField
+from wtforms.validators import DataRequired, Length
 
 class RewardsForm(FlaskForm):
-    service_type = SelectField('Reward Type', choices=[
+    title = StringField('Title: ', validators=[DataRequired(), Length(1, 64)])
+    service_type = SelectField('Reward Type: ', choices=[
         ('discount', 'Discount'),
         ('special offer', 'Special Offer')
     ], validators=[DataRequired()])
     
-    expirationDate = DateTimeField('Booking Date and Time', 
-                                format='%Y-%m-%dT%H:%M',
-                                validators=[DataRequired()])
-    
-    notes = TextAreaField('Special Notes')
+    points = IntegerField('Points needed: ', validators=[DataRequired()])
+    description = TextAreaField('Description: ', validators=[DataRequired()])
+    submit = SubmitField('Create Reward')
