@@ -1,55 +1,286 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loyals | Booking & Rewards</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #F7F7F7; /* Light Gray */
+            color: #2C2C2C; /* Charcoal Gray */
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #1C1C1C; /* Deep Charcoal */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        .navbar .navbar-brand {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            color: #D6B7A1; /* Light Gold */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .navbar .nav-link {
+            color: #D6B7A1; /* Light Gold */
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .navbar .nav-link:hover {
+            color: #C19A6B; /* Soft Gold */
+        }
+        .navbar .btn-outline-light {
+            border-color: #C19A6B; /* Soft Gold */
+            color: #C19A6B; /* Soft Gold */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .navbar .btn-outline-light:hover {
+            background-color: #C19A6B; /* Soft Gold */
+            color: #1C1C1C; /* Deep Charcoal */
+        }
+        .hero-section {
+            background-color: #1C1C1C; /* Deep Charcoal */
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 2s ease-out;
+        }
+        .hero-section::after {
+            content: "";
+            background-image: url('https://source.unsplash.com/random/1920x1080');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .hero-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: 1.5px;
+            animation: slideUp 1.5s ease-out;
+        }
+        .hero-section p {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            animation: fadeIn 2s ease-out;
+        }
+        .hero-section .btn-dark {
+            background-color: #1C1C1C; /* Deep Charcoal */
+            border-color: #1C1C1C;
+            font-weight: 600;
+            padding: 15px 40px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            animation: fadeIn 3s ease-out;
+        }
+        .hero-section .btn-dark:hover {
+            background-color: #C19A6B; /* Soft Gold */
+            color: #1C1C1C;
+        }
+        .card {
+            background-color: #FFF8E1; /* Light Cream */
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            animation: fadeInUp 1.5s ease-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        .card-body {
+            padding: 40px;
+            text-align: center;
+        }
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1C1C1C;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+        .card-text {
+            font-size: 1.125rem;
+            color: #2C2C2C;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        .cta-section {
+            background-color: #D6B7A1; /* Light Gold */
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+        }
+        .cta-section::after {
+            content: "";
+            background-color: rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: fadeIn 2s ease-out;
+        }
+        .cta-section p {
+            font-size: 1.25rem;
+            margin-bottom: 30px;
+            animation: fadeIn 2.5s ease-out;
+        }
+        .cta-section .btn-dark {
+            background-color: #1C1C1C; /* Deep Charcoal */
+            border-color: #1C1C1C;
+            font-weight: 600;
+            padding: 15px 40px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            animation: fadeIn 3s ease-out;
+        }
+        .cta-section .btn-dark:hover {
+            background-color: #C19A6B; /* Soft Gold */
+            color: #1C1C1C;
+        }
+        footer {
+            background-color: #1C1C1C; /* Deep Charcoal */
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        footer p {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
 
-{% block title %}Welcome{% endblock %}
-{% block head %}
-{{ super() }}
-<link rel="stylesheet" href="https://bootswatch.com/5/lux/bootstrap.min.css">
-{% endblock %}
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">Loyals</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="pricing.html">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+                <li class="nav-item"><a class="btn btn-outline-light fw-bold" href="{{ url_for('auth.register') }}">Create an Account</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
-{% block content %}
-<div class="container">
-    <div class="row align-items-center py-5">
-        <div class="col-lg-6">
-            <h1 class="display-4 fw-bold mb-4">Welcome to Loyals Booking & Rewards System</h1>
-            <p class="lead mb-4">Book your services easily and earn rewards with every booking.</p>
-            <div class="d-grid gap-3 d-sm-flex">
-                <a href="" class="btn btn-primary btn-lg px-4">Make a Booking</a>
-                <a href="#services" class="btn btn-outline-secondary btn-lg px-4">Our Services</a>
+<!-- Hero Section -->
+<header class="hero-section">
+    <div class="container">
+        <h1>Welcome to Loyals</h1>
+        <p>Booking & Rewards made simple and luxurious.</p>
+        <a href="register.html" class="btn btn-dark">Get Started</a>
+    </div>
+</header>
+
+<!-- Features Section -->
+<section class="container my-5">
+    <div class="row text-center">
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Effortless Booking</h3>
+                    <p class="card-text">Easily schedule and manage appointments with elegance.</p>
+                </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <div class="card shadow-lg">
-                <div class="card-body p-4">
-                    <h3 class="card-title mb-4">Featured Services</h3>
-                    <div class="row g-4">
-                        <div class="col-6">
-                            <div class="p-3 border rounded text-center">
-                                <h5>Haircut</h5>
-                                <p class="mb-0">50 points</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="p-3 border rounded text-center">
-                                <h5>Massage</h5>
-                                <p class="mb-0">100 points</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="p-3 border rounded text-center">
-                                <h5>Spa</h5>
-                                <p class="mb-0">150 points</p>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="p-3 border rounded text-center">
-                                <h5>Facial</h5>
-                                <p class="mb-0">75 points</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Exclusive Rewards</h3>
+                    <p class="card-text">Earn loyalty points and enjoy VIP perks.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h3 class="card-title">Business Growth</h3>
+                    <p class="card-text">Enhance your business and attract more clients.</p>
                 </div>
             </div>
         </div>
     </div>
-</div>
-{% endblock %}
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Elevate Your Business?</h2>
+        <p>Join today to take control of your bookings and rewards with ease and style.</p>
+        <a href="{{ url_for('auth.register') }}" class="btn btn-dark">Join Now</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2025 Loyals. Booking & Rewards Made Luxurious.</p>
+</footer>
+
+</body>
+</html>

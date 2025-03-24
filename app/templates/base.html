@@ -1,5 +1,7 @@
+
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
+
 
 {% block navbar %}
 <div class="navbar navbar-inverse" role="navigation">
@@ -25,9 +27,11 @@
     </div>
 </div>
 
+
 <nav class="navbar fixed-top">
     <div class="container-fluid"></div>
 </nav>
+
 
 <div id="sidebar">
     <button class="navbar-toggler" type="button" onclick="document.getElementById('sidebar').classList.toggle('expanded')"></button>
@@ -38,10 +42,11 @@
     <a href="#">Clients</a>
     <a href="{{ url_for('main.myservices') }}">My Services</a>
     <a href="{{ url_for('auth.logout') }}">Logout</a>
-  
+ 
   </div>
 {% endblock %}
 
-{% block content %} 
+
+{% block content %}
 <div class="container">{% block page_content %}{% endblock %}</div>
 {% endblock %}
