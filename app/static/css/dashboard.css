@@ -2,25 +2,101 @@ body {
     background-color: #f4f4f4;
 }
 
-#header{
-    text-align: center !important;
-    height: -20px;
-    padding-bottom: 50px;
-    justify-content: center;
+#header h1{
+    text-align: left !important;
+    height: -60px;
+    padding-bottom: 80px;
+    justify-content: left;
     display: flex !important;
+    margin-top: -26px;
+    font-family: "Open Sans", sans-serif;
+    margin-left: 40px;
+    font-size: 25px;
+    font-weight: bold;
+    
 }
 
-#sidebar {
-    width: 100px;
+#containerQuickInsight{
+    position: absolute;
+    left: 226px;
+    display: flex !important;
+    top: 290px;
+}
+
+#quickinsightTitle{
+    font-size: 25px;
+    text-align: center !important;
+}
+
+.card-body{
+    text-align: center;
+}
+
+.card2{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+    position: absolute;
+    bottom: -70px;
+    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 120px;
+}
+
+.card{
+    position: absolute;
+    justify-content: space-around;
+    bottom: -220px;
+    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 120px;
+    
+}
+
+.card3{
+    position: absolute;
+    justify-content: space-around;
+    bottom: -370px;
+    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
+    border-radius: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    height: 120px;
+    
+}
+.card-title{
+    color: rgb(19, 19, 19);
+    font-size: 47px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.card-text{
+    color: rgb(19, 19, 19);
+    
+}
+#main{ 
+    
+    position: absolute;
+    right: 100px;
+    width: 70%;
+    bottom: -29px;
+    top: 240px;
+
+}
+#sidebarfullscreen {
+    width: 200px;
     position: fixed;
-    top: 52px; /* Adjust to match navbar height */
+    top: 0px; /* Adjust to match navbar height was 52 */
     left: 0;
+    bottom: auto;
     height: 100%;
-    background: #ffffff;
+    background: #fefefe;
     padding-top: 20px;
     transition: all 0.3s ease-in-out;
     overflow-y: auto;
-    box-shadow: 5px 10px 30px rgb(197, 197, 202);
+    box-shadow: 5px 10px 30px rgb(159, 159, 161);
 }
 
 #sidebar.expanded{
@@ -32,19 +108,30 @@ text-align: left;
 padding-left: 20px;
 }
 
+#sidebartitle{
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    margin-top: 35px;
+    font-weight: bold;
+    font-family: "Boldonse", system-ui;
+        
+}
 /* Text of letters */
-#sidebar a {
+#sidebarfullscreen a, p {
+    font-size: 17px;
+    font-family: sans-serif;
     color: rgb(0, 0, 0);
     padding: 10px;
     display: block;
     text-decoration: none;
-    margin-top: 20px;
+    margin-top: 50px;
     white-space: nowrap;
     text-overflow: ellipsis;
-    text-align: center;
+    text-align: left;
 }
 
-#sidebar a:hover {
+#sidebarfullscreen a:hover {
     background: #495057;
 }
 
@@ -78,21 +165,6 @@ padding-left: 20px;
 
 .month-year{
     text-align: center;
-}
-
-.switch-month{
-    padding: 2px 2px;
-    width: auto;
-    background-color: #04AA6D;
-    font-size: 30px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    height: 47px;
-    margin-top: 15px;
-}
-
-.main-content{
-    width: 350px;
-    justify-content: center;
 }
 
 .btn-availability{
@@ -131,9 +203,21 @@ padding-left: 20px;
 .Availabilityoption{
     right: 400px;
 }
+
+#calendar{
+margin-top: -110px;
+margin-left: 80px;
+
+}
+
+
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
-@media (max-width: 1911px) {
+@media (max-width: 800px) {
     /* test */
+    .card, .card2, .card3, #quickinsightTitle{
+        display: none;
+
+    }
     
     #sidebar {
         height: 100%;
@@ -154,7 +238,7 @@ padding-left: 20px;
     
     #content {
         margin-top: -50px;
-        margin-left: 80px;
+        margin-left: 100px;
     }
 
     #sidebar.expanded ~ #header{
@@ -169,5 +253,71 @@ padding-left: 20px;
         justify-content: center;
     }
 
+    #calendar{
+        margin-left: absolute;
+    }
+}
+
+    /* EVERYTHING DEALING WITH THE CALENDAR ONLY */
+:root {
+    --fc-button-bg-color: BLUE;
+    --fc-border-color: #b3b0b0;
+
+    .fc-toolbar-title{
+        font-size: 18px;
+        font-family: "Open Sans", sans-serif; 
+    }
+    .fc-daygrid-day-number{
+        color: #495057;
+    } 
+    .fc-col-header-cell-cushion{
+        color: #495057;
+        font-size: small;
+    }
+
+    .fc-toolbar-chunk{
+        margin-top: 20px;
+    }
+    .fc-event-title{
+        font-size: 15px;
+        color: #ffffff;
+    }
+    .fc-prev-button, .fc-next-button{
+        background-color: #323232;
+        border-color: #323232;
+    }
+    .fc-daygrid-event{
+        background-color: #323232;
+        border-color: #323232;
+    }
+    .fc-col-header { /* MIGHT BE USELESS??? */
+        border-radius: 16px !important;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .fc-scrollgrid-sync-inner{
+        margin-top: 25px;
+    }
+    .fc-col-header-cell-cushion{
+        top: -70px;
+    }
+      
+    .fc-scrollgrid { /* Formatting grid for top and left */
+        border-radius: 16px !important;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    }
+      .fc-scrollgrid-section > th {/* Formatting grid for right*/
+        border-radius: 0px 16px 0px 0px !important;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        
+   }
+      .fc-scrollgrid-section > td {/* Formatting grid for bottom right*/
+        border-radius: 0px 0px 16px 16px !important;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        
+      }
 
 }
+
+
+
