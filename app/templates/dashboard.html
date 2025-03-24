@@ -7,65 +7,33 @@
   <!-- Link to your custom CSS file -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}?v=4">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 {% endblock %}
 
   
   
 {% block page_content %}
-  <!--  this might be useless. this is for when the screen is small, it will move to the top, ex:https://getbootstrap.com/docs/5.0/examples/dashboard/ -->
-{% block content %}
-<div class="container">
-  <!--  this might be useless. this is for when the screen is small, it will move to the top, ex:https://getbootstrap.com/docs/5.0/examples/dashboard/ -->
-<nav class="navbar fixed-top">
-  <div class="container-fluid"></div>
-</nav>
-  <!-- Sidebar -->
-<div id="sidebarfullscreen">
-  <p id="sidebartitle">Loyals Booking</p>
-  <a href="{{ url_for('main.dashboard') }}">
-    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 -960 960 960"><path d="M40-120v-80h880v80zm120-120q-33 0-56.5-23.5T80-320v-440q0-33 23.5-56.5T160-840h640q33 0 56.5 23.5T880-760v440q0 33-23.5 56.5T800-240zm0-80h640v-440H160zm0 0v-440z"/></svg>
-    Dashboard</a>
-  <a href="{{ url_for('main.rewards') }}"> <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 -960 960 960"><path d="M160-80v-440H80v-240h208q-5-9-6.5-19t-1.5-21q0-50 35-85t85-35q23 0 43 8.5t37 23.5q17-16 37-24t43-8q50 0 85 35t35 85q0 11-2 20.5t-6 19.5h208v240h-80v440zm400-760q-17 0-28.5 11.5T520-800t11.5 28.5T560-760t28.5-11.5T600-800t-11.5-28.5T560-840m-200 40q0 17 11.5 28.5T400-760t28.5-11.5T440-800t-11.5-28.5T400-840t-28.5 11.5T360-800M160-680v80h280v-80zm280 520v-360H240v360zm80 0h200v-360H520zm280-440v-80H520v80z"/></svg> Rewards</a>           <!-- "sidebar a" in the css folder -->
-  <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 -960 960 960"><path d="M360-80v-529q-91-24-145.5-100.5T160-880h80q0 83 53.5 141.5T430-680h100q30 0 56 11t47 32l181 181-56 56-158-158v478h-80v-240h-80v240zm120-640q-33 0-56.5-23.5T400-800t23.5-56.5T480-880t56.5 23.5T560-800t-23.5 56.5T480-720"/></svg> Clients</a>
-  <a href="{{ url_for('main.myservices') }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-  </svg> My Services</a>
-  <a href="{{ url_for('auth.logout') }}"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 -960 960 960"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h280v80H200v560h280v80zm440-160-55-58 102-102H360v-80h327L585-622l55-58 200 200z"/></svg> Logout</a>
-</div>
 
 <!-- header -->
 <header id="header">
   <h1>Dashboard</h1>
-  </header>
-<div id="containerQuickInsight">
-  
-  <div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">888</h5>
-      <h5 class="card-text">Bookings This Week</h5>
+</header>
+<!--<button type="button" class="pull-right btn btn-primary btn-block btn-availability" data-toggle="modal" data-target="#Modal">+ Set Availability</button>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray;width:100%;"></hr>-->
+<!-- Main Content 
+  <div class="content">-->
+    <!-- This will control the arrows and month header
+    <div class="container main-content">
+      <div class="row">
+        <div class="calendar_header">
+          <button class="col-6 switch-month switch-left"> <span class="glyphicon glyphicon-menu-left"></span></button>
+           <h2 class="col-6 month-year">Month Year</h2>
+          <button class="col-6 switch-month switch-right "> <span class="glyphicon glyphicon-menu-right"></span></i></button>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="card2" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">888</h5>
-      <h5 class="card-text">Earnings This Month</h5>
-    </div>
-  </div>
-  <div class="card3" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">888</h5>
-      <h5 class="card-text">Earnings This Month</h5>
-    </div>
-  </div>
-</div>
-  <!-- main -->
-<div id="main">
-  
-<div id="content">
-  <button type="button" class="pull-right btn btn-primary btn-block btn-availability" data-toggle="modal" data-target="#Modal">+ Set Availability</button>
   <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -74,70 +42,25 @@
           <button type="button" class="closex pull-right" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-      </div>
-          <!-- the fields to create a serivce -->
-  
-  
+      </div>-->
+          <!-- the fields to create a serivce 
+
+
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
       <button type="submit" class="btn btn-primary addservice">Save</button>
     </div>
   </div>
-  </div>
-</div>
-
-
+</div>-->
 <div id="calendar">
-<script>
-  let calendarEl = document.getElementById('calendar');
-  let calendar = new FullCalendar.Calendar(calendarEl, {
-    editable: true,
-    selectable: true,
-    selectHelper: true,
+  <script>
+    let calendarEl = document.getElementById('calendar');
+
+    let calendar = new FullCalendar.Calendar(calendarEl, {});
+
+    calendar.render();
+  </script>
+</div>
     
-    eventClick: function(calEvent, jsEvent, view) 
-           {
-            
-            var modalElement = document.getElementById('myModal');
-            var modal = new bootstrap.Modal(modalElement);
-            $('modal').modal('show');
-           },
-           
-    height: 600,
-    events: [ 
-    { // this object will be "parsed" into an Event Object 
-        title: 'The Title', // a property! 
-        start: '2025-03-01', // a property! 
-        end: '2018-03-02' // a property! 
-    }
- ]
- 
-  });
 
-  calendar.render();
-</script>
-
-<div class="modal fade" id="myModal" role="dialog">
-  <div class="modal-dialog">
-  
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Create Event</h4>
-      </div>
-      <div class="modal-body">
-        <input type="text" class="form-control">
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-   </div>
-</div>
-</div>
-</div>
-    <!-- Bootstrap JS (Required for Collapse) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-{% endblock %}
 {% endblock %}
