@@ -1,6 +1,7 @@
 from .. import db
 
 class RewardTransaction(db.Model):
+    __tablename__ = 'rewards'
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(64))

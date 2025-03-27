@@ -1,5 +1,7 @@
 from functools import wraps
+from app.models.availabletimes import AvailableTimes
 from app.models.services import Service
+from app.static.forms.availability import AvailabilityForm
 from app.static.forms.myservices import ServiceForm
 from .. import db
 from app.models.rewards import RewardTransaction
@@ -26,7 +28,30 @@ def check_is_confirmed(func):
 @login_required
 def dashboard():
     cal = calendar.HTMLCalendar(calendar.SUNDAY)
-    return render_template('dashboard.html', calendar=cal.formatmonth(2025, 3))
+    form = AvailabilityForm()
+    times = AvailableTimes.query.filter_by(user_id=current_user.id).all()
+    events = [{}]
+    for time in times:
+        events = [
+            {
+                'todo' : 'Start Availability',
+                'date' : time.available_start
+            },
+            {
+                'todo' : 'End Availability',
+                'date' : time.available_end
+            }
+        ]
+    if form.validate_on_submit():
+        available = AvailableTimes(
+            user_id=current_user.id,
+            available_start=form.availablefrom.data,
+            available_end=form.availableto.data
+        )
+        db.session.add(available)
+        db.session.commit()
+        return redirect(url_for('main.dashboard'))
+    return render_template('dashboard.html', calendar=cal.formatmonth(2025, 3), form=form, events=events)
 
 @main.route('/inactive')
 @login_required

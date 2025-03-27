@@ -19,8 +19,8 @@
 <header id="header">
   <h1>Dashboard</h1>
 </header>
-<!--<button type="button" class="pull-right btn btn-primary btn-block btn-availability" data-toggle="modal" data-target="#Modal">+ Set Availability</button>
-<hr style="height:2px;border-width:0;color:gray;background-color:gray;width:100%;"></hr>-->
+<button type="button" class="pull-right btn btn-primary btn-block btn-availability" data-toggle="modal" data-target="#Modal">+ Set Availability</button>
+<hr style="height:2px;border-width:0;color:gray;background-color:gray;width:100%;"></hr>
 <!-- Main Content 
   <div class="content">-->
     <!-- This will control the arrows and month header
@@ -33,7 +33,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
   <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -42,21 +42,30 @@
           <button type="button" class="closex pull-right" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-      </div>-->
-          <!-- the fields to create a serivce 
-
-
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
-      <button type="submit" class="btn btn-primary addservice">Save</button>
+        </div>
+          <!-- the fields to create a serivce -->
+           {{ wtf.quick_form(form) }}
+        <div class="modal-footer">
+          <!--<button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary addservice">Save</button>-->
+        </div>
+      </div>
     </div>
   </div>
-</div>-->
 <div id="calendar">
   <script>
     let calendarEl = document.getElementById('calendar');
 
-    let calendar = new FullCalendar.Calendar(calendarEl, {});
+    let calendar = new FullCalendar.Calendar(calendarEl, {
+      events : [
+        {% for event in events %}
+        {
+          title : '{{ event.todo }}',
+          start : '{{ event.date }}',
+        },
+        {% endfor %}
+      ]
+    });
 
     calendar.render();
   </script>
