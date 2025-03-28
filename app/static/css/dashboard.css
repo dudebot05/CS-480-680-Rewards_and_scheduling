@@ -34,12 +34,14 @@ body {
     font-weight: bold;
     font-size: 20px;
     margin-bottom: 20px;
+    margin-top: -60px;
   }
   
   #header h1 {
-    margin-left: 240px;
-    margin-top: 1px;
+    margin-left: 222px;
+    margin-top: -140px;
     font-size: 30px;
+    text-align: center !important;
   }
   
   .insight-card {
@@ -70,10 +72,12 @@ body {
   
   #main {
     margin-left: 220px;
-    margin-top: 60px;
+    margin-top: -80px;
   }
 
-
+  .btn{
+    margin-right: 400px;
+  }
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 800px) {
     /* test */
@@ -108,12 +112,13 @@ body {
         text-align: center !important;
     }
 
-    #header{
+    #header {
         text-align: center !important;
         width: 100% !important;
         margin: 0 auto !important;
         display: flex;
         justify-content: center;
+        margin-top: 1px;
     }
 
     #calendar{
