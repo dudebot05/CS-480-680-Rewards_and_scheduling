@@ -1,214 +1,77 @@
 body {
     background-color: #f4f4f4;
-}
-
-#header h1{
-    text-align: left !important;
-    height: -60px;
-    padding-bottom: 80px;
-    justify-content: left;
-    display: flex !important;
-    margin-top: -26px;
-    font-family: "Open Sans", sans-serif;
-    margin-left: 40px;
-    font-size: 25px;
-    font-weight: bold;
-    
-}
-
-#containerQuickInsight{
-    position: absolute;
-    left: 226px;
-    display: flex !important;
-    top: 290px;
-}
-
-#quickinsightTitle{
-    font-size: 25px;
-    text-align: center !important;
-}
-
-.card-body{
-    text-align: center;
-}
-
-.card2{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 50px;
-    position: absolute;
-    bottom: -70px;
-    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
-    border-radius: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    height: 120px;
-}
-
-.card{
-    position: absolute;
-    justify-content: space-around;
-    bottom: -220px;
-    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
-    border-radius: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    height: 120px;
-    
-}
-
-.card3{
-    position: absolute;
-    justify-content: space-around;
-    bottom: -370px;
-    background-image: linear-gradient(to right, rgb(104, 104, 104) , rgb(245, 245, 245));
-    border-radius: 30px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    height: 120px;
-    
-}
-.card-title{
-    color: rgb(19, 19, 19);
-    font-size: 47px;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-.card-text{
-    color: rgb(19, 19, 19);
-    
-}
-#main{ 
-    
-    position: absolute;
-    right: 100px;
-    width: 70%;
-    bottom: -29px;
-    top: 240px;
-
-}
-#sidebarfullscreen {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  #sidebarfullscreen {
     width: 200px;
     position: fixed;
-    top: 0px; /* Adjust to match navbar height was 52 */
+    top: 0;
     left: 0;
-    bottom: auto;
     height: 100%;
-    background: #fefefe;
-    padding-top: 20px;
-    transition: all 0.3s ease-in-out;
-    overflow-y: auto;
-    box-shadow: 5px 10px 30px rgb(159, 159, 161);
-}
-
-#sidebar.expanded{
-    width: 200px;
-}
-
-#sidebar.expanded a{
-text-align: left;
-padding-left: 20px;
-}
-
-#sidebartitle{
-    font-size: 20px;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    margin-top: 35px;
-    font-weight: bold;
-    font-family: "Boldonse", system-ui;
-        
-}
-/* Text of letters */
-#sidebarfullscreen a, p {
-    font-size: 17px;
-    font-family: sans-serif;
-    color: rgb(0, 0, 0);
-    padding: 10px;
+    background: #fff;
+    box-shadow: 5px 10px 30px rgba(0,0,0,0.1);
+    padding-top: 80px;
+    z-index: 1000;
+  }
+  
+  #sidebarfullscreen a {
     display: block;
+    padding: 15px 20px;
+    color: #1C1C1C;
+    font-weight: 500;
     text-decoration: none;
-    margin-top: 50px;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    text-align: left;
-}
-
-#sidebarfullscreen a:hover {
-    background: #495057;
-}
-
-/* Adjust navbar */
-.navbar {
-    z-index: 1050; /* Ensure it stays on top */
-}
-
-#sidebar.expanded ~ #content{
-    margin-left: 100px;
-}
-
-#sidebar.expanded ~ #header{
-    text-align: center !important;
-}
-
-.navbar-toggler{
-    display: block;
-    margin: 30px; 
-}
-
-
-.calendar_header{
-    display: flex !important;
-}
-
-.col-6{
-    width: 310px;
-    
-}
-
-.month-year{
+  }
+  
+  #sidebarfullscreen a:hover {
+    background-color: #C19A6B;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  #sidebartitle {
     text-align: center;
-}
-
-.btn-availability{
-    background-color: transparent;
-    color: blue;
-    border: none;
-    font-size: 17px;
-    width: auto;
-    margin-top: -40px;
     font-weight: bold;
-}
-.card-body{
-    max-width: auto;
-}
-#Modal{ 
-    margin-top: 190px;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  #header h1 {
+    margin-left: 240px;
+    margin-top: 1px;
+    font-size: 30px;
+  }
+  
+  .insight-card {
+    background-color: #FFF8E1;
+    border-radius: 16px;
+    box-shadow: 0 6px 14px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
   }
 
-.modal-title{
-    font-size: 20px;
-}
-.modal-header{
-    justify-content: center;
-}
-.closex{
-    margin-top: -25px;
-}
-.mb-3{
-    justify-content: space-around; 
-}
-
-.form-select {
-    padding: 10px;
-    border-radius: 5px;
-}
-.Availabilityoption{
-    right: 400px;
-}
-
-#calendar{
-margin-top: -110px;
-margin-left: 80px;
-
-}
+  #containerQuickInsight{
+    margin-left: 220px;
+  }
+  
+  .insight-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 36px;
+    font-weight: bold;
+  }
+  
+  .card-text {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+  #main {
+    margin-left: 220px;
+    margin-top: 60px;
+  }
 
 
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
