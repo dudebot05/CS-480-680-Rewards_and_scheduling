@@ -49,7 +49,7 @@ def myservices():
     form = ServiceForm()
     if form.validate_on_submit():
         service = Service()
-    return render_template('myservices.html')
+    return render_template('myservices.html', form=form)
 
 @main.route('/rewards', methods=['GET', 'POST'])
 @login_required

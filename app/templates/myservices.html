@@ -5,83 +5,150 @@
 
 {% block head %}
   {{ super() }}
-  <!-- Link to your custom CSS file -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/myservices.css') }}">
-
 {% endblock %}
 
 {% block page_content %}
- 
 
-  <!-- Main Content -->
-  <div id="content">
+<!-- Main Content -->
+<div id="content">
 
-       <!-- modal window -->
-      <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="ModalLabel">Create a New Service</h5>
-              <button type="button" class="closex pull-right" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-              <!-- the fields to create a serivce -->
+  <!-- Modal Trigger -->
+  <div class="bg-light clearfix mb-3 p-3 rounded">
+    <header id="header">
+      <h1 style="font-family: 'Playfair Display', serif;">All Services</h1>
+    </header>
+
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#Modal">
+      + Create New Service
+    </button>
+  </div>
+
+  <!-- Bootstrap 3 Modal -->
+  <div class="modal fade" id="Modal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="ModalLabel">Create a New Service</h4>
+        </div>
+
         <div class="modal-body">
           <form id="createServiceForm">
-            <div class="mb-3">
-              <label for="serviceName" class="form-label">Service Name</label>
-              <input type="text" class="form-control" id="serviceName" placeholder="Enter title" required>
+            <div class="form-group">
+              {{ form.name.label(class="control-label") }}
+              {{ form.name(class="form-control", id="serviceName") }}
             </div>
-            <div class="mb-3">
-              <label for="serviceDescription" class="form-label">Description</label>
-              <textarea class="form-control" id="serviceDescription" rows="3" placeholder="Enter a description" required></textarea>
+            <div class="form-group">
+              {{ form.description.label(class="control-label") }}
+              {{ form.description(class="form-control", id="serviceDescription") }}
             </div>
-            <div class="mb-3">
-              <label for="servicePrice" class="form-label">Price</label>
-              <input step="0.01" type="number" class="form-control" id="servicePrice" placeholder="Enter a price" required>
+            <div class="form-group">
+              {{ form.price.label(class="control-label") }}
+              {{ form.price(class="form-control", id="servicePrice") }}
+            </div>
+            <div class="checkbox">
+              <label>
+                {{ form.is_active(id="serviceActive") }} {{ form.is_active.label.text }}
+              </label>
             </div>
           </form>
         </div>
+
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary closebutton" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary addservice">Add Service</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary addservice">Add Service</button>
         </div>
+
       </div>
     </div>
   </div>
-  
 
-      <div class="bg-light clearfix mb-3 p-3 rounded">
-        <header id="header">
-          <h1>All Services</h1>
-        </header>
-        
-        <!-- Button to toggle adding a new service -->
-        <button type="button" class="pull-right btn btn-primary btn-block btn-create-service" data-toggle="modal" data-target="#Modal">+ Create New Service</button>
-      </div>
-      
-      <div class="searchbar">
-        <input type="text" class="form-control" placeholder="Search...">
-      </div>
+  <!-- Search bar -->
+  <div class="searchbar">
+    <input type="text" class="form-control" placeholder="Search...">
+  </div>
 
-        <!-- the listed service -->
-      <div id="services-list">
-        <div class="service-card">
-
-             <!-- this controls service card text as a whole  -->
-          <div class="card-body">
-            <h5 class="service-title">Hair Dressing</h5>
-
-               <!-- this controls the description and price row -->
-            <div class="service-description text-muted mb-0">This is proof of concept</div>
-            <div class="service-price fw-bold pull-right">$30</div>       
-          </div>
-        </div>
+  <!-- Services List -->
+  <div id="services-list">
+    <div class="service-card">
+      <div class="card-body">
+        <h5 class="service-title">Hair Dressing</h5>
+        <div class="service-description text-muted mb-0">This is proof of concept</div>
+        <div class="service-price fw-bold pull-right">$30</div>
+        <div class="service-status mt-2 text-success">Active</div>
       </div>
     </div>
-  </div>  
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </div> 
+  </div>
+</div>
+
+<!-- JS for Modal + Service Card -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<script>
+  $(function () {
+    $('.addservice').on('click', function (e) {
+      e.preventDefault(); // prevent page reload
+
+      // Get form values
+      var name = $('#serviceName').val().trim();
+      var description = $('#serviceDescription').val().trim();
+      var price = $('#servicePrice').val().trim();
+      var isActive = $('#serviceActive').is(':checked');
+
+      console.log("Add button clicked:", name, description, price, isActive);
+
+      if (!name || !description || !price) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      var statusClass = isActive ? 'text-success' : 'text-danger';
+      var statusText = isActive ? 'Active' : 'Inactive';
+
+      var newCard = `
+        <div class="service-card">
+          <div class="card-body">
+            <h5 class="service-title">${name}</h5>
+            <div class="service-description text-muted mb-0">${description}</div>
+            <div class="service-price fw-bold pull-right">$${parseFloat(price).toFixed(2)}</div>
+            <div class="service-status mt-2 ${statusClass}">${statusText}</div>
+            <button class="btn btn-sm btn-default mt-2 toggle-status">Toggle Status</button>
+          </div>
+        </div>
+      `;
+
+      $('#services-list').append(newCard);
+      $('#createServiceForm')[0].reset();
+      $('#Modal').modal('hide');
+      $('body').removeClass('modal-open');
+      $('.modal-backdrop').remove();
+
+      // Attach toggle to the new button
+      var newToggleBtn = $('#services-list .toggle-status').last();
+      var newStatusLabel = $('#services-list .service-status').last();
+
+      newToggleBtn.on('click', function () {
+        if (newStatusLabel.hasClass('text-success')) {
+          newStatusLabel.removeClass('text-success').addClass('text-danger').text('Inactive');
+        } else {
+          newStatusLabel.removeClass('text-danger').addClass('text-success').text('Active');
+        }
+      });
+    });
+  });
+</script>
+
+
+
+<!-- Make sure these are included in base.html OR here if needed -->
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap 3 JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 {% endblock %}
