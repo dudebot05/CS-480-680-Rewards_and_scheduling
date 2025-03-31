@@ -90,6 +90,8 @@ def editprofilesettings():
 
     return render_template('editprofilesettings.html', form=form)
 
+
+
 @main.route('/')
 def index():
     return render_template('index.html')

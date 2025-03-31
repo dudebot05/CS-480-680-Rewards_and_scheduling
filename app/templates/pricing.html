@@ -1,0 +1,54 @@
+{% extends "dashboard.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Pricing{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <!-- Link to your custom CSS file -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/profilesettings.css') }}?v=4">
+{% endblock %}
+
+{% block page_content %}
+<div class="d-flex flex-column align-items-center">
+  <!-- Header -->
+  <header id="header">
+    <h1>Pricing</h1>
+  </header>
+  <!-- Payment form -->
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <!-- Payment radio option -->
+      <div class="form-group form-radio">
+      {{ form.billing_type(class="form-radio-input") }}
+      </div>
+    <!-- Payment info card -->
+    <div class="card">
+      <div class="card-body text-center">
+        <h3 class="card-text">Get access to all our features for</h3>
+        <div id="payment-amount">
+          <h5 class="card-title">$15/month</h5>
+        </div>
+        <!-- Start trial button -->
+        <button type="submit" class="btn btn-lg btn-primary editbutton">
+        {{ form.submit.label.text }}
+        </button>
+        <p class="card-text text-left">Customizable calendar<br>Create and manage services<br>
+          Configure loyalty programs<br>Customer self-scheduling</p>
+      </div>
+    </div>
+  </form>
+
+  <!-- Check which payment option is selected -->
+  <script>
+    const options = document.querySelectorAll('input[name="billing_type"]');
+    options.forEach(option => {
+      option.addEventListener('change', event => {
+        const value = event.target.value;
+        const output = document.getElementById('payment-amount');
+        output.innerHTML = `<h5 class="card-title">$${value}/month</h5>`;
+      });
+    });
+  </script>
+</div>
+{% endblock %}
