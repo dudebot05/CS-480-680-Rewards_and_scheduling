@@ -1,5 +1,6 @@
 from functools import wraps
 from app.models.availabletimes import AvailableTimes
+from app.models.booking import Booking
 from app.models.services import Service
 from app.static.forms.availability import AvailabilityForm
 from app.static.forms.myservices import ServiceForm
@@ -30,9 +31,10 @@ def dashboard():
     cal = calendar.HTMLCalendar(calendar.SUNDAY)
     form = AvailabilityForm()
     times = AvailableTimes.query.filter_by(user_id=current_user.id).all()
-    events = [{}]
+    bookings = Booking.query.filter_by(user_id=current_user.id).all()
+    appointments = [{}]
     for time in times:
-        events = [
+        availability = [
             {
                 'todo' : 'Start Availability',
                 'date' : time.available_start
@@ -40,6 +42,13 @@ def dashboard():
             {
                 'todo' : 'End Availability',
                 'date' : time.available_end
+            }
+        ]
+    for booking in bookings:
+        appointments = [
+            {
+                'todo' : booking.service_type,
+                'date' : booking.booking_date
             }
         ]
     if form.validate_on_submit():
@@ -51,7 +60,7 @@ def dashboard():
         db.session.add(available)
         db.session.commit()
         return redirect(url_for('main.dashboard'))
-    return render_template('dashboard.html', calendar=cal.formatmonth(2025, 3), form=form, events=events)
+    return render_template('dashboard.html', calendar=cal.formatmonth(2025, 3), form=form, availability=availability, appointments=appointments)
 
 @main.route('/inactive')
 @login_required

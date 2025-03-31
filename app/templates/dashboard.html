@@ -58,10 +58,16 @@
 
     let calendar = new FullCalendar.Calendar(calendarEl, {
       events : [
-        {% for event in events %}
+        {% for available in availability %}
         {
-          title : '{{ event.todo }}',
-          start : '{{ event.date }}',
+          title : '{{ available.todo }}',
+          start : '{{ available.date }}',
+        },
+        {% endfor %}
+        {% for appointment in appointments %}
+        {
+          title : '{{ appointment.todo }}',
+          start : '{{ appointment.date }}',
         },
         {% endfor %}
       ]
