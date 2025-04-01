@@ -45,24 +45,10 @@ body {
 
     }
     
-    #sidebar.expanded{
-        width: 200px;
-    }
-
-    #sidebar.expanded ~ #content{
-        margin-left: 200px !important;
-    }
-    
     #content {
         margin-top: -50px;
         margin-left: 100px;
     }
-
-    #sidebar.expanded ~ #header{
-        text-align: center !important;
-    }
-
-
     #calendar{
         margin-left: absolute;
     }

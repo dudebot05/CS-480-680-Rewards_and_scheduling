@@ -86,30 +86,9 @@ body {
 
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 768px) {
-    #sidebar {
-        height: 100%;
-        position: absolute;
-        width: 100px;
-        top: 56px; /* Below navbar */
-        left: 0;
-        top: 52px; 
-        }
-
-    #sidebar.expanded{
-        width: 200px;
-    }
-
-    #sidebar.expanded ~ #content{
-        margin-left: 200px;
-    }
-    
     #content {
         margin-top: -50px;
         margin-left: 80px;
-    }
-
-    #sidebar.expanded ~ #header{
-        margin-left: 200px;
     }
 
     #header{
