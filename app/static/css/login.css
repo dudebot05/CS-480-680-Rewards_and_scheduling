@@ -78,6 +78,10 @@ body {
   font-size: 30px;
 }
 
+.card:hover {
+  display: none;
+}
+
 .footer {
   position:absolute; bottom:-262px;
   background-color: #333; /* Dark background */

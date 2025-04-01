@@ -1,37 +1,16 @@
-{% extends "base.html" %}
+{% extends "index.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Inactive{% endblock %}
-
-{% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href=""></a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-{% endblock %}
+{% block title %}<title>Loyals | Account Confirmation</title>{% endblock %}
 
 {% block page_content%}
-<header id="header">Please confirm account</header>
+<body>
+    <div class="d-flex flex-column justify-content-center align-items-center h-100">
+        <div class="card m-2 h-50">
+            <div class="card-body">
+<div class="card-title">Please confirm account</div>
 
+<p class="card-text">
 {% with messages = get_flashed_messages() %}
               {% if messages %}
                 {% for message in messages %}
@@ -39,9 +18,15 @@
                 {% endfor %}
               {% endif %}
             {% endwith %}
-
-<p>
-    Didn't get the email?
-    <a href="{{ url_for('main.resend') }}">Resend</a>.
-</p>
+        </p>
+</div>
+<div class="card-footer text-center">
+    <p>
+        Didn't get the email?
+        <a href="{{ url_for('main.resend') }}">Resend</a>.
+    </p>
+</div>
+</div>
+</div>
+</body>
 {% endblock %}

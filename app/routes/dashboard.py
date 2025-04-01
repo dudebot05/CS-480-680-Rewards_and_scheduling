@@ -73,7 +73,6 @@ def editprofilesettings():
     return render_template('editprofilesettings.html', form=form)
 
 @main.route('/pricing')
-@login_required
 def pricing():
     form = PriceForm()
     if form.validate_on_submit():
@@ -83,4 +82,4 @@ def pricing():
 
 @main.route('/')
 def index():
-    return redirect(url_for('auth.login'))
+    return render_template('index.html')
