@@ -1,52 +1,71 @@
-
 {% extends "bootstrap/base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-
-{% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href=""></a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-
-
-<nav class="navbar fixed-top">
-    <div class="container-fluid"></div>
-</nav>
-
-
-<div id="sidebar">
-    <button class="navbar-toggler" type="button" onclick="document.getElementById('sidebar').classList.toggle('expanded')"></button>
-    <a href="{{ url_for('main.dashboard') }}">Dashboard</a>
-    <a href="{{ url_for('main.profilesettings') }}">Profile</a>
-    <a href="{{ url_for('main.pricing') }}">Pricing</a>
-    <a href="{{ url_for('main.rewards') }}">Rewards</a>           <!-- "sidebar a" in the css folder -->
-    <a href="#">Clients</a>
-    <a href="{{ url_for('main.myservices') }}">My Services</a>
-    <a href="{{ url_for('auth.logout') }}">Logout</a>
- 
-  </div>
+{% block head %}
+{{ super() }}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 {% endblock %}
 
+{% block navbar %}
+<!-- IF USER IS LOGGED IN THEY WILL SEE SIDE NAV BAR-->
+{% if current_user.is_authenticated %}
+<div id="sidebar">
+    <p id="sidebartitle">Loyals Booking</p>
+    <a href="{{ url_for('main.dashboard') }}">
+      <span class="material-icons">dashboard</span> Dashboard
+    </a>
+    <a href="{{ url_for('main.rewards') }}">
+      <span class="material-icons">card_giftcard</span> Rewards
+    </a>
+    <a href="#">
+      <span class="material-icons">people</span> Clients
+    </a>
+    <a href="{{ url_for('main.myservices') }}">
+      <span class="material-icons">build</span> My Services
+    </a>
+	<a href="{{ url_for('main.pricing') }}">Pricing</a>
+	<a href="{{ url_for('main.profilesettings') }}">Profile</a>
+    <a href="{{ url_for('auth.logout') }}">
+      <span class="material-icons">logout</span> Logout
+    </a>
+  </div>
+  {% endif %}
 
-{% block content %}
+  <!-- IF USER IS NOT LOGGED IN THEY WILL SEE THE TOP NAV BAR-->
+{% if not current_user.is_authenticated %}
+<nav class="navbar navbar-default">
+  <div class="container1">
+    <div class="navbar-header">
+      <!-- Collapsed Hamburger -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Loyals</a>
+    </div>
+
+    <!-- Collect the nav links for toggling -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- nav-link is a custom class you can keep for styling -->
+        <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+        <li><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+        <!-- btn-outline-light is also a custom class in your CSS -->
+        <li><a class="btn btn-outline-light" href="{{ url_for('auth.register') }}">Create an Account</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endif %}
+
+
+
+{% endblock %}
+
+{% block content %} 
 <div class="container">{% block page_content %}{% endblock %}</div>
 {% endblock %}

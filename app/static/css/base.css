@@ -1,0 +1,108 @@
+#header h1 {
+    margin-top: auto;
+    font-size: 40px;
+    text-align: center !important;
+  }
+#sidebar {
+    width: 200px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: #fff;
+    box-shadow: 5px 10px 30px rgba(0,0,0,0.1);
+    padding-top: 80px;
+    z-index: 1000;
+  }
+
+  .navbar {
+    background-color: #1C1C1C; /* Deep Charcoal */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #D6B7A1; /* Light Gold */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Using .nav-link as a custom selector */
+.navbar .nav-link {
+    color: #D6B7A1; /* Light Gold */
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar .nav-link:hover {
+    color: #C19A6B; /* Soft Gold */
+}
+
+/* Custom button style */
+.navbar .btn-outline-light {
+    border-color: #C19A6B; /* Soft Gold */
+    color: #C19A6B; /* Soft Gold */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+  
+  #sidebar a {
+    display: block;
+    padding: 40px 20px;
+    color: #1C1C1C;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  #sidebar a:hover {
+    background-color: #C19A6B;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  #sidebartitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: -60px;
+  }
+
+  .material-icons {
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 20px;
+  }  
+
+  @media (max-width: 768px) {
+    /* test */
+    
+    #sidebar {
+        width: 160px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #fff;
+        box-shadow: 5px 10px 30px rgba(0,0,0,0.1);
+        padding-top: 80px;
+        z-index: 1000;
+        }
+
+        #header h1 {
+          margin-left: 200px;
+          margin-top: 30px;
+          font-size: 40px;
+          text-align: center !important;
+        }
+
+    #header h1 {
+      margin-top: 30px;
+      font-size: 40px;
+      text-align: center !important;
+    }
+}
