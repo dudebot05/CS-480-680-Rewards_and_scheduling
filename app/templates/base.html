@@ -4,7 +4,7 @@
 {% block head %}
 {{ super() }}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}?v=5">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
 {% endblock %}
 
 {% block navbar %}
@@ -32,28 +32,32 @@
 
   <!-- IF USER IS NOT LOGGED IN THEY WILL SEE THE TOP NAV BAR-->
 {% if not current_user.is_authenticated %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href=""></a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-                <li><a href=""></a></li>
-            </ul>
-        </div>
+<nav class="navbar navbar-default">
+  <div class="container1">
+    <div class="navbar-header">
+      <!-- Collapsed Hamburger -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarNav">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!-- Brand -->
+      <a class="navbar-brand" href="#">Loyals</a>
     </div>
-</div>
+
+    <!-- Collect the nav links for toggling -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- nav-link is a custom class you can keep for styling -->
+        <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+        <li><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+        <!-- btn-outline-light is also a custom class in your CSS -->
+        <li><a class="btn btn-outline-light" href="{{ url_for('auth.register') }}">Create an Account</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
 {% endif %}
 
 

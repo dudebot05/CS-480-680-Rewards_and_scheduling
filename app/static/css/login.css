@@ -6,19 +6,6 @@ body {
   background-size: auto;
   /*background-color: #999851;*/
 }
-
-/* For navbar background and border colors */
-.navbar-inverse {
-  background-color: #2f2f2f;
-  border-color: #2f2f2f;   
-}
-
-/* Change navbar text colors for contrast */
-.navbar-inverse .navbar-brand,
-.navbar-inverse .navbar-nav > li > a {
-  color: #fff;   /* White text */
-}
-
 /* Login Button */
 .loginbutton {
   background-color: #2f2f2f;
