@@ -37,20 +37,18 @@ body {
   .btn{
     right: -100px;
   }
+
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
-@media (max-width: 800px) {
+@media (max-width: 768px) {
     /* test */
     .card, .card2, .card3, #quickinsightTitle{
         display: none;
 
     }
     
-    #content {
-        margin-top: -50px;
-        margin-left: 100px;
-    }
-    #calendar{
-        margin-left: absolute;
+    #main {
+      margin-left: 165px;
+      margin-top: 12px;
     }
 }
 

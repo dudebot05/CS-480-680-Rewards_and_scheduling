@@ -84,6 +84,30 @@
     letter-spacing: 1px;
 }
 
+.btn-create-service {
+  background-color: #C19A6B;
+  border: #C19A6B;
+  width: 100%;
+  margin-top: 10px;
+  font-size: 17px;
+  font-style: italic;
+  width: auto;
+
+}
+
+.searchbar input {
+  width: 100%;
+}
+
+.searchbar {
+  margin-top: 20px;
+}
+
+.service-card {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
   @media (max-width: 768px) {
     #sidebar {
     width: 160px;
