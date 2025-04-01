@@ -3,6 +3,7 @@
     font-size: 40px;
     text-align: center !important;
   }
+
 #sidebar {
     width: 200px;
     position: fixed;
@@ -15,7 +16,36 @@
     z-index: 1000;
   }
 
-  .navbar {
+  #sidebar a {
+    display: block;
+    padding: 35px 7px;
+    color: #1C1C1C;
+    font-weight: 500;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  
+  #sidebar a:hover {
+    background-color: #C19A6B;
+    color: #fff;
+    border-radius: 8px;
+  }
+  
+  #sidebartitle {
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: -60px;
+  }
+
+  .material-icons {
+    vertical-align: middle;
+    margin-right: 8px;
+    font-size: 20px;
+  }  
+
+.navbar {
     background-color: #1C1C1C; /* Deep Charcoal */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
@@ -47,36 +77,6 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
-  
-  #sidebar a {
-    display: block;
-    padding: 40px 20px;
-    color: #1C1C1C;
-    font-weight: 500;
-    font-size: 16px;
-    text-decoration: none;
-  }
-  
-  #sidebar a:hover {
-    background-color: #C19A6B;
-    color: #fff;
-    border-radius: 8px;
-  }
-  
-  #sidebartitle {
-    text-align: center;
-    font-weight: bold;
-    font-size: 20px;
-    margin-bottom: 20px;
-    margin-top: -60px;
-  }
-
-  .material-icons {
-    vertical-align: middle;
-    margin-right: 8px;
-    font-size: 20px;
-  }  
 
   @media (max-width: 768px) {
     /* test */

@@ -11,24 +11,26 @@
 <!-- IF USER IS LOGGED IN THEY WILL SEE SIDE NAV BAR-->
 {% if current_user.is_authenticated %}
 <div id="sidebar">
-    <p id="sidebartitle">Loyals Booking</p>
-    <a href="{{ url_for('main.dashboard') }}">
-      <span class="material-icons">dashboard</span> Dashboard
-    </a>
-    <a href="{{ url_for('main.rewards') }}">
-      <span class="material-icons">card_giftcard</span> Rewards
-    </a>
-    <a href="#">
-      <span class="material-icons">people</span> Clients
-    </a>
-    <a href="{{ url_for('main.myservices') }}">
-      <span class="material-icons">build</span> My Services
-    </a>
-	<a href="{{ url_for('main.pricing') }}">Pricing</a>
-	<a href="{{ url_for('main.profilesettings') }}">Profile</a>
-    <a href="{{ url_for('auth.logout') }}">
-      <span class="material-icons">logout</span> Logout
-    </a>
+  <p id="sidebartitle">Loyals Booking</p>
+  <a href="{{ url_for('main.dashboard') }}">
+    <span class="material-icons">dashboard</span> Dashboard
+  </a>
+  <a href="{{ url_for('main.rewards') }}">
+    <span class="material-icons">card_giftcard</span> Rewards
+  </a>
+  <a href="#">
+    <span class="material-icons">people</span> Clients
+  </a>
+  <a href="{{ url_for('main.myservices') }}">
+    <span class="material-icons">build</span> My Services
+  </a>
+  <a href="{{ url_for('main.pricing') }}">Pricing</a>
+	<a href="{{ url_for('main.profilesettings') }}">
+    <span class="material-icons">person</span> Profile
+  </a>
+  <a href="{{ url_for('auth.logout') }}">
+    <span class="material-icons">logout</span> Logout
+  </a>
   </div>
   {% endif %}
 
