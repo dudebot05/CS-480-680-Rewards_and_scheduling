@@ -2,12 +2,6 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Content */
-#content {
-    margin-left: 2px;
-    padding: 10px;
-}
-
 #header-left{
     height: -20px;
     margin-right: 10px;
@@ -86,11 +80,19 @@ body {
 
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 768px) {
-    #content {
-        margin-top: -50px;
-        margin-left: 80px;
-    }
-
+    .btn-create-service {
+        width: 100%;
+        margin-top: 10px;
+      }
+    
+      .searchbar input {
+        width: 100%;
+      }
+    
+      .service-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     #header{
         margin-top: -50px;
         margin-left: 80px;

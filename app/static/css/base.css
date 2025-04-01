@@ -4,6 +4,12 @@
     text-align: center !important;
   }
 
+  #content {
+    margin-left: 20px;
+    padding: 10px;
+}
+
+
 #sidebar {
     width: 200px;
     position: fixed;
@@ -79,30 +85,20 @@
 }
 
   @media (max-width: 768px) {
-    /* test */
-    
     #sidebar {
-        width: 160px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        background: #fff;
-        box-shadow: 5px 10px 30px rgba(0,0,0,0.1);
-        padding-top: 80px;
-        z-index: 1000;
-        }
+    width: 160px;
+  }
 
-        #header h1 {
-          margin-left: 200px;
-          margin-top: 30px;
-          font-size: 40px;
-          text-align: center !important;
-        }
+  #content {
+    margin-left: 160px;
+    padding: 15px;
+  }
 
-    #header h1 {
-      margin-top: 30px;
-      font-size: 40px;
-      text-align: center !important;
-    }
+  #header h1 {
+    margin-left: 200px;
+    margin-top: 30px;
+    font-size: 40px;
+    text-align: center !important;
+  }
+
 }
