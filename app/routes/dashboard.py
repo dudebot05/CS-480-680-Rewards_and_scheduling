@@ -10,7 +10,7 @@ from app.static.edit import EditForm
 from app.static.rewards import RewardsForm
 from app.static.pricing import PriceForm
 from . import main
-from flask import flash, render_template, redirect, url_for
+from flask import flash, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from ..auth.routes import send_validate_account_email
 import calendar
@@ -94,6 +94,16 @@ def myservices():
         )
         db.session.add(service)
         db.session.commit()
+        return redirect(url_for('main.myservices'))
+    
+        # Check if a delete was requested
+    if request.method == 'POST' and 'delete_id' in request.form:
+        service_id = request.form.get('delete_id')
+        service = Service.query.filter_by(id=service_id, user_id=current_user.id).first()
+        if service:
+            db.session.delete(service)
+            db.session.commit()
+            flash('Service deleted.', 'success')
         return redirect(url_for('main.myservices'))
 
     

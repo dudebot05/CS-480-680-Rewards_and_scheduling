@@ -75,8 +75,13 @@
         <div class="service-description text-muted mb-0">{{ service.description }}</div>
         <div class="service-price fw-bold pull-right">${{ "%.2f"|format(service.price) }}</div>
         <div class="service-status mt-2 {{ 'text-success' if service.is_active else 'text-danger' }}">
-        
+        {{ 'Active' if service.is_active else 'Inactive' }}
         </div>
+        <form method="POST" action="{{ url_for('main.myservices') }}" style="display: inline;">
+          {{ form.hidden_tag() }}
+          <input type="hidden" name="delete_id" value="{{ service.id }}">
+          <button type="submit" class="btn btn-sm btn-danger mt-2" onclick="return confirm('Are you sure?')">Delete</button>
+        </form>        
       </div>
     </div>
     {% endfor %}
