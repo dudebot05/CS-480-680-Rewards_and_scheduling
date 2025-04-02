@@ -9,9 +9,8 @@
     padding: 10px;
 }
 
-
 #sidebar {
-    width: 200px;
+    width: 170px;
     position: fixed;
     top: 0;
     left: 0;
@@ -39,10 +38,14 @@
   
   #sidebartitle {
     text-align: center;
-    font-weight: bold;
     font-size: 20px;
     margin-bottom: 20px;
     margin-top: -60px;
+    font-family: 'Playfair Display', serif;
+    scale: 1.2;
+    color: #D6B7A1; /* Light Gold */
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .material-icons {
@@ -108,10 +111,21 @@
   align-items: flex-start;
 }
 
-  @media (max-width: 768px) {
-    #sidebar {
-    width: 160px;
+  @media (max-width: 1200px) {
+    /* test */
+    .card, .card2, .card3, #quickinsightTitle{
+      display: none;
   }
+  #sidebar {
+    width: 53px;
+  }
+  #sidebartitle{
+    display: none;
+  }
+  .sidebartext{
+      display: none;
+  }
+
 
   #content {
     margin-left: 160px;
