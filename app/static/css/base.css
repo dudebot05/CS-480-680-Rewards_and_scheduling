@@ -84,7 +84,7 @@
     letter-spacing: 1px;
 }
 
-.btn-create-service {
+.btn-create-service, .btn-primary {
   background-color: #C19A6B;
   border: #C19A6B;
   width: 100%;
