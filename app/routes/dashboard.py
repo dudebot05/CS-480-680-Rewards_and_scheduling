@@ -45,11 +45,26 @@ def resend():
     return redirect(url_for('main.inactive'))
 
 @main.route('/myservices', methods=['GET', 'POST'])
+@login_required
 def myservices():
+    servicesList = Service.query.filter_by(user_id=current_user.id).all()
     form = ServiceForm()
     if form.validate_on_submit():
-        service = Service()
-    return render_template('myservices.html', form=form)
+        service = Service(
+            name=form.name.data,
+            description=form.description.data,
+            price=form.price.data,
+            user_id=current_user.id,
+            is_active=form.is_active.data
+            
+        )
+        db.session.add(service)
+        db.session.commit()
+        return redirect(url_for('main.myservices'))
+
+    
+    return render_template('myservices.html', form=form, servicesList=servicesList)
+
 
 @main.route('/rewards', methods=['GET', 'POST'])
 @login_required
