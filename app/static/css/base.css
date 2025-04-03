@@ -111,9 +111,9 @@
   align-items: flex-start;
 }
 
-  @media (max-width: 1200px) {
+  @media (max-width: 994px) {
     /* test */
-    .card, .card2, .card3, #quickinsightTitle{
+    #containerQuickInsight{
       display: none;
   }
   #sidebar {
