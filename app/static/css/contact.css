@@ -1,0 +1,88 @@
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #F7F7F7;
+  color: #2C2C2C;
+}
+
+.contact-header {
+  background-color: #1C1C1C; /* Deep Charcoal */
+  color: white;
+  padding: 80px 0;
+}
+
+.contact-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+
+.contact-header p {
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.contact-wrapper {
+  padding: 60px 0;
+}
+
+.form-box,
+.chat-box {
+  background-color: #FFF8E1; /* Light Cream */
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+}
+
+.form-box:hover,
+.chat-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.or-divider {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.btn-dark {
+  background-color: #1C1C1C;
+  border-color: #1C1C1C;
+  font-weight: 600;
+  padding: 12px 30px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.btn-dark:hover {
+  background-color: #C19A6B; /* Soft Gold */
+  color: #1C1C1C;
+}
+
+footer,
+.footer {
+  background-color: #1C1C1C;
+  color: white;
+  padding: 40px 0;
+  text-align: center;
+}
+
+footer p,
+.footer p {
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .or-divider {
+    display: none;
+  }
+
+  .form-box,
+  .chat-box {
+    margin-bottom: 30px;
+  }
+}

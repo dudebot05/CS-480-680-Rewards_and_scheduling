@@ -8,6 +8,7 @@ from .. import db
 from app.models.rewards import RewardTransaction
 from app.static.edit import EditForm
 from app.static.rewards import RewardsForm
+from app.static.forms.contact import ContactForm
 from app.static.pricing import PriceForm
 from . import main
 from flask import flash, render_template, redirect, url_for, request
@@ -161,3 +162,13 @@ def pricing():
 @main.route('/')
 def index():
     return render_template('index.html')
+
+@main.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        # You can handle the form submission here (e.g., send email or save to DB)
+        flash('Thanks for your message! We will get back to you shortly.')
+        return redirect(url_for('main.contact'))
+
+    return render_template('contact.html', form=form)

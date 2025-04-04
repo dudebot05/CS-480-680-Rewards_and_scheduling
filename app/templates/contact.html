@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
+{% endblock %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block page_content %}
+<section class="contact-header text-center text-white py-5">
+  <div class="container">
+    <h1 class="display-4">Contact Us</h1>
+    <p class="lead">Send us a message or chat with us directly.</p>
+  </div>
+</section>
+
+<section class="contact-wrapper py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <!-- Contact Form -->
+      <div class="col-md-5 mb-5 mb-md-0">
+        <div class="form-box p-4">
+          <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <h3 class="text-center mb-4">Send a Message</h3>
+            <div class="mb-3">
+              {{ form.name.label(class="form-label") }}
+              {{ form.name(class="form-control", placeholder="Your Name") }}
+            </div>
+            <div class="mb-3">
+              {{ form.email.label(class="form-label") }}
+              {{ form.email(class="form-control", placeholder="Email Address") }}
+            </div>
+            <div class="mb-3">
+              {{ form.message.label(class="form-label") }}
+              {{ form.message(class="form-control", rows=5, placeholder="Your Message") }}
+            </div>
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <p class="text-success text-center">{{ message }}</p>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <div class="text-center">
+              {{ form.submit(class="btn btn-dark px-5 py-2") }}
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- OR Divider -->
+      <div class="col-md-2 text-center">
+        <div class="or-divider my-4">OR</div>
+      </div>
+
+      <!-- Tawk.to Live Chat Box Explanation -->
+      <div class="col-md-5">
+        <div class="chat-box d-flex flex-column justify-content-center align-items-center text-center p-4">
+          <h4 class="mb-3">Live Chat</h4>
+          <p>Click the chat icon in the bottom-right corner to get help instantly.</p>
+          <p class="text-muted" style="font-size: 0.9rem;">We’re available 24/7 to help you.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Tawk.to Live Chat Script -->
+  <!--Start of Tawk.to Script-->
+  <div class="tawkto">
+    <script type="text/javascript">
+      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+      (function(){
+      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+      s1.async=true;
+      s1.src='https://embed.tawk.to/67a302a1825083258e102c08/1ijac4hqq';
+      s1.charset='UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1,s0);
+      })();
+      </script>
+      <!--End of Tawk.to Script-->
+    </div>
+{% endblock %}
+
+{% block footer %}
+<div class="footer text-center py-4 bg-dark text-white">
+  <p class="mb-0">&copy; 2025 Loyals. Booking & Rewards Made Luxurious.</p>
+</div>
+{% endblock %}

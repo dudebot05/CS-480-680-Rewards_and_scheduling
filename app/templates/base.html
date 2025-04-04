@@ -53,15 +53,16 @@
         <span class="icon-bar"></span>
       </button>
       <!-- Brand -->
-      <a class="navbar-brand sidebartitle" href="#">Loyals</a>
+      <a class="navbar-brand sidebartitle" href="{{ url_for('main.index') }}">Loyals</a>
     </div>
 
     <!-- Collect the nav links for toggling -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav navbar-nav navbar-right">
         <!-- nav-link is a custom class you can keep for styling -->
-        <li><a class="nav-link" href="pricing.html">Pricing</a></li>
+        <li><a class="nav-link" href="{{ url_for('main.pricing') }}">Pricing</a></li>
         <li><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+        <li><a class="nav-link" href="{{ url_for('main.contact') }}">Help</a></li>
         <!-- btn-outline-light is also a custom class in your CSS -->
         <li><a class="btn btn-outline-light" href="{{ url_for('auth.register') }}">Create an Account</a></li>
       </ul>
