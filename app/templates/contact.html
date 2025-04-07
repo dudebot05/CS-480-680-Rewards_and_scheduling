@@ -18,17 +18,18 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <a class="navbar-brand" href="#">Loyals</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
-        <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
-        <li class="nav-item"><a class="btn btn-outline-light fw-bold" href="#">Create an Account</a></li>
-      </ul>
-    </div>
+      <a class="navbar-brand" href="#">Loyals</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li><a class="nav-link" href="{{ url_for('main.contact') }}">Help</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+              <li class="nav-item"><a class="btn btn-outline-light fw-bold" href="{{ url_for('auth.register') }}">Create an Account</a></li>
+          </ul>
+      </div>
   </div>
 </nav>
 
@@ -47,20 +48,33 @@
       <!-- Contact Form -->
       <div class="col-md-5 mb-5 mb-md-0">
         <div class="form-box">
-          <form>
+          <form method="POST" action="">
+            {{ form.hidden_tag() }}
+
             <div class="mb-4">
-              <label for="name" class="form-label">Your Name</label>
-              <input type="text" class="form-control" id="name" required />
+              {{ form.name.label(class="form-label") }}
+              {{ form.name(class="form-control", placeholder="Your Name") }}
             </div>
+
             <div class="mb-4">
-              <label for="email" class="form-label">Email Address</label>
-              <input type="email" class="form-control" id="email" required />
+              {{ form.email.label(class="form-label") }}
+              {{ form.email(class="form-control", placeholder="Email Address") }}
             </div>
+
             <div class="mb-4">
-              <label for="message" class="form-label">Your Message</label>
-              <textarea class="form-control" id="message" rows="5" required></textarea>
+              {{ form.message.label(class="form-label") }}
+              {{ form.message(class="form-control", placeholder="Your Message", rows=5) }}
             </div>
-            <button type="submit" class="btn btn-dark">Send Message</button>
+
+            {% with messages = get_flashed_messages() %}
+              {% if messages %}
+                {% for message in messages %}
+                  <div class="alert alert-success text-center">{{ message }}</div>
+                {% endfor %}
+              {% endif %}
+            {% endwith %}
+
+            {{ form.submit(class="btn btn-dark w-100") }}
           </form>
         </div>
       </div>

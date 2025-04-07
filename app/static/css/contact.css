@@ -26,8 +26,8 @@ body {
   letter-spacing: 1px;
 }
 
-.navbar .nav-link:hover {
-  color: #C19A6B;
+.navbar-default .navbar-nav > li > a:hover {
+  color: #C19A6B; /* Soft Gold */
 }
 
 .navbar .btn-outline-light {

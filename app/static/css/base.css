@@ -66,6 +66,14 @@
     text-transform: uppercase;
     letter-spacing: 1px;
 }
+.custom-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 4px auto;
+  background-color:  #D6B7A1;
+}
+
 
 /* Using .nav-link as a custom selector */
 .navbar .nav-link {
@@ -75,8 +83,9 @@
     letter-spacing: 1px;
 }
 
-.navbar .nav-link:hover {
-    color: #C19A6B; /* Soft Gold */
+.navbar-nav > li > a:hover {
+  color: #C19A6B; /* Soft Gold */
+  background-color: transparent;
 }
 
 /* Custom button style */
