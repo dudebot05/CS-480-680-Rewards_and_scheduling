@@ -15,6 +15,7 @@ from flask import flash, render_template, redirect, url_for, request
 from flask_login import login_required, current_user
 from ..auth.routes import send_validate_account_email
 import calendar
+from flask_mailman import EmailMessage
 
 def check_is_confirmed(func):
     @wraps(func)
@@ -167,8 +168,28 @@ def index():
 def contact():
     form = ContactForm()
     if form.validate_on_submit():
-        # You can handle the form submission here (e.g., send email or save to DB)
-        flash('Thanks for your message! We will get back to you shortly.')
+        # Compose the message
+        email_body = f"""
+New message from Loyals Contact Form:
+
+Name: {form.name.data}
+Email: {form.email.data}
+
+Message:
+{form.message.data}
+        """
+        message = EmailMessage(
+            subject="New Contact Form Submission - Loyals",
+            body=email_body,
+            to=["loyalsbooking@gmail.com"]
+        )
+        try:
+            message.send()
+            flash("Thanks for your message! We'll get back to you shortly.")
+        except Exception as e:
+            print("Email send error:", e)
+            flash("Sorry, we couldn't send your message right now.", "danger")
+
         return redirect(url_for('main.contact'))
 
-    return render_template('contact.html', form=form)
+    return render_template("contact.html", form=form)
