@@ -2,49 +2,76 @@ body {
   font-family: 'Poppins', sans-serif;
   background-color: #F7F7F7;
   color: #2C2C2C;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background-color: #1C1C1C;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .navbar-brand {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  color: #D6B7A1;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link {
+  color: #D6B7A1;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar .nav-link:hover {
+  color: #C19A6B;
+}
+
+.navbar .btn-outline-light {
+  border-color: #C19A6B;
+  color: #C19A6B;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.navbar .btn-outline-light:hover {
+  background-color: #C19A6B;
+  color: #1C1C1C;
 }
 
 .contact-header {
-  background-color: #1C1C1C; /* Deep Charcoal */
+  background-color: #1C1C1C;
   color: white;
-  padding: 80px 0;
+  padding: 100px 0;
+  text-align: center;
 }
 
 .contact-header h1 {
   font-family: 'Playfair Display', serif;
   font-size: 3.5rem;
   font-weight: 700;
+  margin-bottom: 20px;
   letter-spacing: 1.5px;
 }
 
-.contact-header p {
-  font-size: 1.25rem;
-  font-weight: 400;
-}
-
 .contact-wrapper {
-  padding: 60px 0;
+  padding: 80px 0;
 }
 
-.form-box,
-.chat-box {
-  background-color: #FFF8E1; /* Light Cream */
+.form-box {
+  background-color: #FFF8E1;
   border-radius: 12px;
+  padding: 40px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
 }
 
-.form-box:hover,
-.chat-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
-}
-
-.or-divider {
-  font-size: 1.25rem;
-  font-weight: 600;
-  color: #888;
+.form-label,
+.form-control {
+  font-size: 1.1rem;
 }
 
 .btn-dark {
@@ -52,37 +79,64 @@ body {
   border-color: #1C1C1C;
   font-weight: 600;
   padding: 12px 30px;
-  letter-spacing: 1px;
   text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .btn-dark:hover {
-  background-color: #C19A6B; /* Soft Gold */
+  background-color: #C19A6B;
   color: #1C1C1C;
 }
 
-footer,
-.footer {
+.or-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #888;
+  padding: 20px 0;
+}
+
+.chat-box {
+  height: 100%;
+  background-color: #FFF8E1;
+  border-radius: 12px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.chat-box h5 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #1C1C1C;
+}
+
+.chat-box p {
+  font-size: 1rem;
+  color: #2C2C2C;
+  margin-bottom: 10px;
+}
+
+footer {
   background-color: #1C1C1C;
   color: white;
   padding: 40px 0;
   text-align: center;
 }
 
-footer p,
-.footer p {
+footer p {
   font-size: 1rem;
   letter-spacing: 1px;
 }
 
-/* Responsive Tweaks */
 @media (max-width: 768px) {
   .or-divider {
     display: none;
-  }
-
-  .form-box,
-  .chat-box {
-    margin-bottom: 30px;
   }
 }

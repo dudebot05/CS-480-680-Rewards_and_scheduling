@@ -60,9 +60,9 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="nav navbar-nav navbar-right">
         <!-- nav-link is a custom class you can keep for styling -->
+        <li><a class="nav-link" href="{{ url_for('main.contact') }}">Help</a></li>
         <li><a class="nav-link" href="{{ url_for('main.pricing') }}">Pricing</a></li>
         <li><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
-        <li><a class="nav-link" href="{{ url_for('main.contact') }}">Help</a></li>
         <!-- btn-outline-light is also a custom class in your CSS -->
         <li><a class="btn btn-outline-light" href="{{ url_for('auth.register') }}">Create an Account</a></li>
       </ul>

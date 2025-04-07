@@ -1,93 +1,104 @@
-{% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact Us | Loyals</title>
 
-{% block head %}
-  {{ super() }}
+  <!-- Fonts + Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/contact.css') }}">
-{% endblock %}
+</head>
+<body>
 
-{% block title %}Contact Us{% endblock %}
-
-{% block page_content %}
-<section class="contact-header text-center text-white py-5">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
   <div class="container">
-    <h1 class="display-4">Contact Us</h1>
-    <p class="lead">Send us a message or chat with us directly.</p>
+    <a class="navbar-brand" href="#">Loyals</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+        <li class="nav-item"><a class="btn btn-outline-light fw-bold" href="#">Create an Account</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Contact Header -->
+<section class="contact-header">
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>Send us a message or chat with us directly.</p>
   </div>
 </section>
 
-<section class="contact-wrapper py-5">
+<!-- Contact Form & Chat Bot -->
+<section class="contact-wrapper">
   <div class="container">
     <div class="row align-items-center">
       <!-- Contact Form -->
       <div class="col-md-5 mb-5 mb-md-0">
-        <div class="form-box p-4">
-          <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <h3 class="text-center mb-4">Send a Message</h3>
-            <div class="mb-3">
-              {{ form.name.label(class="form-label") }}
-              {{ form.name(class="form-control", placeholder="Your Name") }}
+        <div class="form-box">
+          <form>
+            <div class="mb-4">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="name" required />
             </div>
-            <div class="mb-3">
-              {{ form.email.label(class="form-label") }}
-              {{ form.email(class="form-control", placeholder="Email Address") }}
+            <div class="mb-4">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="email" required />
             </div>
-            <div class="mb-3">
-              {{ form.message.label(class="form-label") }}
-              {{ form.message(class="form-control", rows=5, placeholder="Your Message") }}
+            <div class="mb-4">
+              <label for="message" class="form-label">Your Message</label>
+              <textarea class="form-control" id="message" rows="5" required></textarea>
             </div>
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                {% for message in messages %}
-                  <p class="text-success text-center">{{ message }}</p>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
-            <div class="text-center">
-              {{ form.submit(class="btn btn-dark px-5 py-2") }}
-            </div>
+            <button type="submit" class="btn btn-dark">Send Message</button>
           </form>
         </div>
       </div>
 
       <!-- OR Divider -->
       <div class="col-md-2 text-center">
-        <div class="or-divider my-4">OR</div>
+        <div class="or-divider">OR</div>
       </div>
 
-      <!-- Tawk.to Live Chat Box Explanation -->
+      <!-- Live Chat Description Card -->
       <div class="col-md-5">
-        <div class="chat-box d-flex flex-column justify-content-center align-items-center text-center p-4">
-          <h4 class="mb-3">Live Chat</h4>
-          <p>Click the chat icon in the bottom-right corner to get help instantly.</p>
-          <p class="text-muted" style="font-size: 0.9rem;">We’re available 24/7 to help you.</p>
+        <div class="chat-box">
+          <h5>Live Chat</h5>
+          <p>Need help instantly?</p>
+          <p>Click the green chat icon in the bottom-right corner to chat with our support team.</p>
+          <p class="text-muted" style="font-size: 0.9rem;">Available 24/7</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Tawk.to Live Chat Script -->
-  <!--Start of Tawk.to Script-->
-  <div class="tawkto">
-    <script type="text/javascript">
-      var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-      (function(){
-      var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-      s1.async=true;
-      s1.src='https://embed.tawk.to/67a302a1825083258e102c08/1ijac4hqq';
-      s1.charset='UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1,s0);
-      })();
-      </script>
-      <!--End of Tawk.to Script-->
-    </div>
-{% endblock %}
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Loyals. Booking & Rewards Made Luxurious.</p>
+</footer>
 
-{% block footer %}
-<div class="footer text-center py-4 bg-dark text-white">
-  <p class="mb-0">&copy; 2025 Loyals. Booking & Rewards Made Luxurious.</p>
-</div>
-{% endblock %}
+<!-- Tawk.to Script -->
+<script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/67a302a1825083258e102c08/1ijac4hqq';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+</body>
+</html>
