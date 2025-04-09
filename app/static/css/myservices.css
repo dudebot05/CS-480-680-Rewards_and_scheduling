@@ -55,12 +55,12 @@ body {
 .modal-title{
     font-size: 20px;
 }
-.modal-header{
-    justify-content: center;
+.modal-header {
+    display: flex;
+    justify-content: space-between; 
+    gap: 10px;
 }
-.closex{
-    margin-top: -25px;
-}
+
 .mb-3{
     justify-content: space-around; 
 }
