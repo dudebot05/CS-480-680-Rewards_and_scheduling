@@ -83,22 +83,8 @@ def resend():
 @main.route('/myservices', methods=['GET', 'POST'])
 @login_required
 def myservices():
-    servicesList = Service.query.filter_by(user_id=current_user.id).all()
     form = ServiceForm()
-    if form.validate_on_submit():
-        service = Service(
-            name=form.name.data,
-            description=form.description.data,
-            price=form.price.data,
-            user_id=current_user.id,
-            is_active=form.is_active.data
-            
-        )
-        db.session.add(service)
-        db.session.commit()
-        return redirect(url_for('main.myservices'))
-    
-        # Check if a delete was requested
+
     if request.method == 'POST' and 'delete_id' in request.form:
         service_id = request.form.get('delete_id')
         service = Service.query.filter_by(id=service_id, user_id=current_user.id).first()
@@ -108,8 +94,23 @@ def myservices():
             flash('Service deleted.', 'success')
         return redirect(url_for('main.myservices'))
 
-    
+    if form.validate_on_submit():
+        service = Service(
+            name=form.name.data,
+            description=form.description.data,
+            price=form.price.data,
+            user_id=current_user.id,
+            is_active=form.is_active.data
+        )
+        db.session.add(service)
+        db.session.commit()
+        flash('Service added successfully!', 'success')
+        return redirect(url_for('main.myservices'))
+
+    servicesList = Service.query.filter_by(user_id=current_user.id).all()
+
     return render_template('myservices.html', form=form, servicesList=servicesList)
+
 
 @main.route('/rewards', methods=['GET', 'POST'])
 @login_required

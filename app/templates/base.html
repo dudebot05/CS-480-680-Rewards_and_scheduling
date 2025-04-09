@@ -9,7 +9,8 @@
 
 {% block navbar %}
 <!-- IF USER IS LOGGED IN THEY WILL SEE SIDE NAV BAR-->
-{% if current_user.is_authenticated %}
+{% set hide_sidebar = ['auth.login', 'auth.register', 'main.index'] %}
+{% if current_user.is_authenticated and request.endpoint not in ['auth.login', 'auth.register'] %}
 <div id="sidebar">
   <p id="sidebartitle">Loyals</p>
   <a href="{{ url_for('main.dashboard') }}">
@@ -77,5 +78,20 @@
 {% endblock %}
 
 {% block content %} 
-<div class="container">{% block page_content %}{% endblock %}</div>
+  <div class="container">
+
+    {# ✅ Flash messages shown ONLY on appropriate pages #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages and request.endpoint not in ['auth.login', 'auth.register', 'main.index', 'main.contact'] %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% block page_content %}{% endblock %}
+  </div>
 {% endblock %}
