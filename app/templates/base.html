@@ -78,8 +78,6 @@
 
 {% block content %} 
   <div class="container">
-
-    {# ✅ Flash messages shown ONLY on appropriate pages #}
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages and request.endpoint not in ['auth.login', 'auth.register', 'main.index', 'main.contact'] %}
         {% for category, message in messages %}

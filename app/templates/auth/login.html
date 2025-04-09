@@ -1,102 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | Loyals Booking</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Fonts & Bootstrap -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-{% extends "base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #f8f8f8;
+      color: #2C2C2C;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      background-color: #1C1C1C;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+    .navbar .navbar-brand {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #D6B7A1;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .navbar .nav-link {
+      color: #D6B7A1;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .navbar .nav-link:hover {
+      color: #C19A6B;
+    }
+    .navbar .btn-outline-light {
+      border-color: #C19A6B; /* Soft Gold */
+      color: #C19A6B; /* Soft Gold */
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .navbar .btn-outline-light:hover {
+      background-color: #C19A6B; /* Soft Gold */
+      color: #1C1C1C; /* Deep Charcoal */
+    }
+    .login-card {
+      background-color: #fdfdfd;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 2px 10px 30px rgba(0, 0, 0, 0.747);
+      padding: 40px;
+      width: 100%;
+      max-width: 450px;;
+    }
+    .login-header {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #1C1C1C;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+    .form-control {
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      background-color: #1C1C1C;
+      border-color: #1C1C1C;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      width: 100%;
+      padding: 12px;
+    }
+    .btn-primary:hover {
+      background-color: #C19A6B;
+      color: #1C1C1C;
+    }
+    .create-account {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .create-account .btn {
+      border-color: #C19A6B;
+      color: #C19A6B;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .create-account .btn:hover {
+      background-color: #C19A6B;
+      color: #1C1C1C;
+    }
+    .form-group-forgotpass a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.95rem;
+    }
+    footer {
+      background-color: #1C1C1C;
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer p {
+      font-size: 1rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
 
+<body>
 
-{% block head %}
-  {{ super() }}
-  <!-- Link to your custom CSS file -->
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
-{% endblock %}
-
-
-{% block title %}Login{% endblock %}
-
-
-{% block page_content %}
-<div class="container d-flex justify-content-center align-items-center vh-100">
-      <div class="card mt-5 loginblock">
-        <div class="text-center business-name">Loyals Booking</div>
-        <div class="card-body">
-          <form method="POST" action="">
-            {{ form.hidden_tag() }}
-            <!-- Card Title -->
-            <div class="form-group-title text-center">
-             <p>Log in</p>
-            </div>
-            <!-- Username Field -->
-            <div class="form-group">
-              {{ form.username.label(class="form-control-label") }}
-              {{ form.username(class="form-control", placeholder="Enter your username") }}
-            </div>
-           
-            <!-- Password Field -->
-            <div class="form-group">
-              {{ form.password.label(class="form-control-label") }}
-              {{ form.password(class="form-control", placeholder="Enter your password") }}
-            </div>
-           
-            <!-- Remember Me Checkbox -->
-            <div class="form-group form-check">
-              {{ form.remember_me(class="form-check-input") }}
-              {{ form.remember_me.label(class="form-check-label") }}
-            </div>
-
-
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                {% for message in messages %}
-                <p style="color: green;">{{ message }}</p>
-                {% endfor %}
-              {% endif %}
-            {% endwith %}
-   
-            <!-- login button -->
-            <button type="submit" class="btn btn-primary btn-block loginbutton">
-              {{ form.submit.label.text }}
-            </button>
-
-
-            <!-- Forgot Password Added by Iyona-->
-            <div class="form-group-forgotpass text-center">
-                  <a href="{{ url_for('auth.reset_password_request') }}">Forgot Password?</a>
-             </div>
-
-
-             <div class="card-footer text-center">
-              <a href="{{ url_for('auth.register') }}" class="btn btn-primary btn-lg createbutton">Create New Account</a>
-            </div>
-          </form>
-        </div>
-
-
-      </div>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <div class="container">
+    <a class="navbar-brand" href="#">Loyals</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li><a class="nav-link" href="{{ url_for('main.contact') }}">Help</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('main.pricing') }}">Pricing</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ url_for('auth.login') }}">Login</a></li>
+        <li class="nav-item"><a class="btn btn-outline-light fw-bold" href="{{ url_for('auth.register') }}">Create an Account</a></li>
+      </ul>
     </div>
+  </div>
+</nav>
+
+<!-- Login Form Section -->
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="login-card">
+    <div class="login-header">Loyals Booking</div>
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+
+      <div class="form-group">
+        {{ form.username.label(class="form-control-label") }}
+        {{ form.username(class="form-control", placeholder="Enter your username") }}
+      </div>
+
+      <div class="form-group">
+        {{ form.password.label(class="form-control-label") }}
+        {{ form.password(class="form-control", placeholder="Enter your password") }}
+      </div>
+
+      <div class="form-group form-check mb-3">
+        {{ form.remember_me(class="form-check-input") }}
+        {{ form.remember_me.label(class="form-check-label") }}
+      </div>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            <p class="text-success text-center">{{ message }}</p>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <button type="submit" class="btn btn-primary">
+        {{ form.submit.label.text }}
+      </button>
+
+      <div class="form-group-forgotpass">
+        <a href="{{ url_for('auth.reset_password_request') }}">Forgot Password?</a>
+      </div>
+
+      <div class="create-account">
+        <a href="{{ url_for('auth.register') }}" class="btn btn-outline-light mt-3">Create New Account</a>
+      </div>
+    </form>
   </div>
 </div>
 
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Loyals. Booking & Rewards Made Luxurious.</p>
+</footer>
 
-  <!--
-<div class="tawkto">
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/67a302a1825083258e102c08/1ijac4hqq';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
-  </script>
-
-</div>
--->
-
-{% block footer %}
-<div class="footer">
-    <p>This would be the copy right area</p>
-</div>
-{% endblock %}
-{% endblock %}
-
+</body>
+</html>
