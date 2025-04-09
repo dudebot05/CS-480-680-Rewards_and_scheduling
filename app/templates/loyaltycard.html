@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loyalty Card</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">"
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -125,6 +126,34 @@
     </style>
 </head>
 <body>
+
+    <div id="sidebar">
+        <p id="sidebartitle">Loyals</p>
+        <a href="{{ url_for('main.dashboard') }}">
+          <span class="material-icons">dashboard</span> 
+        <span class="sidebartext">Dashboard</span>
+        </a>
+        <a href="{{ url_for('main.rewards') }}">
+          <span class="material-icons">card_giftcard</span>
+          <span class="sidebartext">Rewards</span>
+        </a>
+        <a href="#">
+          <span class="material-icons">people</span> 
+          <span class="sidebartext">Clients</span>
+        </a>
+        <a href="{{ url_for('main.myservices') }}">
+          <span class="material-icons">build</span> 
+          <span class="sidebartext">My Services</span>
+        </a>
+          <a href="{{ url_for('main.profilesettings') }}">
+          <span class="material-icons">person</span>
+          <span class="sidebartext">Profile</span> 
+        </a>
+        <a href="{{ url_for('auth.logout') }}">
+          <span class="material-icons">logout</span>
+          <span class="sidebartext">Logout</span> 
+        </a>
+    </div>
 
 <div class="container">
     <h1 class="my-5 text-center" style="color: #7c4d25;">Loyalty Card</h1>

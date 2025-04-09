@@ -128,7 +128,7 @@ def rewards():
         db.session.add(reward)
         db.session.commit()
         return redirect(url_for('main.rewards'))
-    return render_template('rewards.html', form=form, rewardsList=rewardsList)
+    return render_template('loyaltycard.html', form=form, rewardsList=rewardsList)
 
 @main.route('/profilesettings', methods=['GET', 'POST'])
 def profilesettings():
