@@ -153,7 +153,6 @@ def editprofilesettings():
     return render_template('editprofilesettings.html', form=form)
 
 @main.route('/pricing')
-@login_required
 def pricing():
     form = PriceForm()
     if form.validate_on_submit():
