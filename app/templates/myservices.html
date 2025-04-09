@@ -63,8 +63,26 @@
 
   <!-- Search bar -->
   <div class="searchbar">
-    <input type="text" class="form-control" placeholder="Search...">
+    <input type="text" id="service-search" class="form-control" placeholder="Search...">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $('#service-search').on('keyup', function () {
+          const query = $(this).val().toLowerCase().trim();
+          $('.service-card').each(function () {
+            const title = $(this).find('.service-title').text().toLowerCase();
+    
+            if (title.includes(query)) {
+              $(this).show();
+            } else {
+              $(this).hide();
+            }
+          });
+        });
+      });
+    </script>
   </div>
+  
 
   <!-- Services List -->
   <div id="services-list">
@@ -88,6 +106,7 @@
   </div>
 
 </div>
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
