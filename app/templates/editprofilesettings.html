@@ -20,21 +20,11 @@
         <form method="POST" action="" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <h5 class="card-title">Editing Profile</h5>
-        <!-- Profile Picture -->
-        <img class="card-img-top" src="{{ url_for('static', filename='images/DefaultProfile.png') }}" alt="Profile Picture">
-        <div class="form-group form-file">
-            {{ form.profile_pic.label(class="form-control-label") }}
-            {{ form.profile_pic() }}
-        </div>
+            <img class="card-img" src="{{ url_for('static', filename='images/DefaultProfile.png') }}" alt="Profile Picture">
         <!-- Username -->
-            <div class="form-group text-left">
+            <div class="form-group text-left" style="padding-top: 30px;">
                 {{ form.username.label(class="form-control-label") }}
                 {{ form.username(class="form-control", placeholder="Enter your username") }}
-            </div>
-        <!-- Account Type -->
-            <div class="form-group form-radio text-left">
-                {{ form.account_type.label(class="form-radio-label") }}
-                {{ form.account_type(class="form-radio-input") }}
             </div>
         <!-- Submit Button -->
             <button type="submit" class="btn btn-primary btn-lg savebutton">

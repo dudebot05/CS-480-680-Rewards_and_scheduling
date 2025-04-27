@@ -53,19 +53,16 @@ def rewards():
 @main.route('/profilesettings', methods=['GET', 'POST'])
 def profilesettings():
     username=current_user.username
-    account='Customer'
     if current_user.is_client():
         account='Owner'
-    return render_template('profilesettings.html', username=username, account=account)
+    return render_template('profilesettings.html', username=username)
 
 @main.route('/editprofilesettings', methods=['GET', 'POST'])
 def editprofilesettings():
     user = current_user
-    account='Customer'
     form = EditForm()
     if form.validate_on_submit():
         user.username=form.username.data
-        account=form.account_type.data
         db.session.commit()
         flash('Profile changes saved.')
         return redirect(url_for('main.profilesettings'))
