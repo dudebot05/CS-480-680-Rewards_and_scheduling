@@ -6,13 +6,14 @@
 {% block head %}
   {{ super() }}
   <link rel="stylesheet" href="{{ url_for('static', filename='css/myservices.css') }}">
+  
 {% endblock %}
 
 {% block page_content %}
 <div id="content">
 
   <div class="bg-light clearfix mb-3 p-3 rounded">
-    <h1 class="allservice">All Services</h1>
+    <h1 class="header">All Services</h1>
     <button type="button" class="pull-right btn btn-primary btn-block btn-create-service" data-toggle="modal" data-target="#Modal">
       + Create New Service
     </button>    
