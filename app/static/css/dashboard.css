@@ -30,13 +30,15 @@ body {
   }
   
   #main {
-    margin-left: 220px;
-    margin-top: -80px;
+    margin-left: 200px;
+    margin-top: 36px;
+    margin-right: 30px;
   }
 
   .btn{
     right: -100px;
   }
+
 
 /* Responsive Sidebar (ON Small Screens ONLY!!!!!!) */
 @media (max-width: 768px) {
@@ -73,12 +75,16 @@ body {
         margin-top: 20px;
     }
     .fc-event-title{
-        font-size: 15px;
-        color: #ffffff;
+        font-size: 12px;
+        color: #ffffffe1;
     }
     .fc-prev-button, .fc-next-button{
-        background-color: #C19A6B;
-        border-color: #C19A6B;
+        background-color:#7c4d25;
+        border-color: #7c4d25;
+    }
+    .fc-event-time{
+      color: #ffffff;
+      font-size: 12px;
     }
     .fc-daygrid-event{
         background-color: #C19A6B;

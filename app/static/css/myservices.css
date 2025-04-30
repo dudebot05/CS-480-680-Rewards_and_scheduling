@@ -2,19 +2,14 @@ body {
     background-color: #f4f4f4;
 }
 
-#header-left{
-    height: -20px;
-    margin-right: 10px;
-    padding: 20px;
-    font-size: 50px;
-}
-
 .pull-left{
     font-size: 32px;
 }
 
-#header-left{
-    font-size: 20px;
+.header{
+  font-size: 45px;
+  text-align: center !important;
+  color: #7c4d25;
 }
 
 .service-card {
