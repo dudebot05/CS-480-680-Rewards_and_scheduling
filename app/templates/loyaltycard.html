@@ -138,7 +138,7 @@
           <span class="material-icons">card_giftcard</span>
           <span class="sidebartext">Rewards</span>
         </a>
-        <a href="#">
+        <a href="{{ url_for('main.clients') }}">
           <span class="material-icons">people</span> 
           <span class="sidebartext">Clients</span>
         </a>
@@ -164,9 +164,9 @@
         <label for="clientSelect" class="toggle-label">Select Client for Loyalty Card</label>
         <select class="form-control" id="clientSelect">
             <option value="">--Select Client--</option>
-            <option value="Client1">Client 1</option>
-            <option value="Client2">Client 2</option>
-            <option value="Client3">Client 3</option>
+            {% for client in clientList %}
+            <option value="{{ client.id }}">{{ client.name }}, {{ client.email }}</option>
+            {% endfor %}
         </select>
     </div>
 

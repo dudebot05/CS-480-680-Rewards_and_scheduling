@@ -6,6 +6,7 @@ from .rewards import RewardTransaction
 from .availabletimes import AvailableTimes
 from .permission import Permission
 from .services import Service
+from .client import Client
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from itsdangerous import BadSignature, SignatureExpired, URLSafeTimedSerializer
@@ -19,6 +20,7 @@ class User(UserMixin, db.Model):
     is_confirmed = db.Column(db.Boolean, default=False)
     reward_points = db.Column(db.Integer, default=0)
     bookings = db.relationship('Booking', backref='user', lazy='dynamic')
+    clients = db.relationship('Client', backref='user', lazy='dynamic')
     services = db.relationship('Service', backref='user', lazy='dynamic')
     reward_transactions = db.relationship('RewardTransaction', backref='user', lazy='dynamic')
     available_times = db.relationship('AvailableTimes', backref='user', lazy='dynamic')

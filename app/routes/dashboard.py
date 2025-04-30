@@ -1,8 +1,10 @@
 from functools import wraps
 from app.models.availabletimes import AvailableTimes
 from app.models.booking import Booking
+from app.models.client import Client
 from app.models.services import Service
 from app.static.forms.availability import AvailabilityForm
+from app.static.forms.booking import BookingForm
 from app.static.forms.myservices import ServiceForm
 from .. import db
 from app.models.rewards import RewardTransaction
@@ -34,6 +36,9 @@ def dashboard():
     form = AvailabilityForm()
     times = AvailableTimes.query.filter_by(user_id=current_user.id).all()
     bookings = Booking.query.filter_by(user_id=current_user.id).all()
+    
+    user_id = current_user.id
+    availability = [{}]
     appointments = [{}]
     for time in times:
         availability = [
@@ -47,9 +52,11 @@ def dashboard():
             }
         ]
     for booking in bookings:
+        bkid = booking.service_type
+        service = Service.query.filter_by(id=bkid).first()
         appointments = [
             {
-                'todo' : booking.service_type,
+                'todo' : service.name,
                 'date' : booking.booking_date
             }
         ]
@@ -62,7 +69,7 @@ def dashboard():
         db.session.add(available)
         db.session.commit()
         return redirect(url_for('main.dashboard'))
-    return render_template('dashboard.html', calendar=cal.formatmonth(2025, 3), form=form, availability=availability, appointments=appointments)
+    return render_template('dashboard.html', calendar=cal.formatmonth(2025, 3), form=form, availability=availability, appointments=appointments, user_id=user_id)
 
 @main.route('/inactive')
 @login_required
@@ -115,20 +122,8 @@ def myservices():
 @main.route('/rewards', methods=['GET', 'POST'])
 @login_required
 def rewards():
-    rewardsList = RewardTransaction.query.filter_by(user_id=current_user.id).all()
-    form = RewardsForm()
-    if form.validate_on_submit():
-        reward = RewardTransaction(
-            user_id=current_user.id,
-            title=form.title.data,
-            points=form.points.data,
-            transaction_type=form.service_type.data,
-            description=form.description.data
-        )
-        db.session.add(reward)
-        db.session.commit()
-        return redirect(url_for('main.rewards'))
-    return render_template('loyaltycard.html', form=form, rewardsList=rewardsList)
+    clientList = Client.query.filter_by(user_id=current_user.id).all()
+    return render_template('loyaltycard.html', clientList=clientList)
 
 @main.route('/profilesettings', methods=['GET', 'POST'])
 def profilesettings():
@@ -151,6 +146,39 @@ def editprofilesettings():
         return redirect(url_for('main.profilesettings'))
 
     return render_template('editprofilesettings.html', form=form)
+
+@main.route('/booking/<int:user_id>', methods=['GET', 'POST'])
+def bookings(user_id):
+    form = BookingForm()
+    user = current_user
+    services = Service.query.filter_by(user_id=current_user.id).all()
+    services_list = [(i.id, i.name) for i in services]
+    form.service_type.choices = services_list
+    if form.validate_on_submit():
+        booking = Booking(
+            service_type = form.service_type.data,
+            booking_date = form.date.data,
+            user_id = current_user.id
+        )
+        db.session.add(booking)
+        db.session.commit()
+
+        client = Client(
+            name = form.name.data,
+            email = form.email.data,
+            phone = form.phone.data,
+            user_id = current_user.id,
+            booking_id = booking.id
+        )
+        db.session.add(client)
+        db.session.commit()
+        return redirect(url_for('main.bookings', user_id=current_user.id))
+    return render_template('booking.html', form=form, user=user, services=services)
+
+@main.route('/clients')
+def clients():
+    clientList = Client.query.filter_by(user_id=current_user.id).all()
+    return render_template('clients.html', clientList=clientList)
 
 @main.route('/pricing')
 def pricing():

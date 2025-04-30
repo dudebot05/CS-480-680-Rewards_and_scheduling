@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}My Clients{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/myservices.css') }}">
+{% endblock %}
+
+{% block page_content %}
+<div id="content">
+    <div class="bg-light clearfix mb-3 p-3 rounded">
+        <h1 class="allservice">All Clients</h1> 
+    </div>
+    <div class="searchbar">
+        <input type="text" id="service-search" class="form-control" placeholder="Search...">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+          $(document).ready(function () {
+            $('#service-search').on('keyup', function () {
+              const query = $(this).val().toLowerCase().trim();
+              $('.service-card').each(function () {
+                const title = $(this).find('.service-title').text().toLowerCase();
+        
+                if (title.includes(query)) {
+                  $(this).show();
+                } else {
+                  $(this).hide();
+                }
+              });
+            });
+          });
+        </script>
+    </div>
+
+    <div id="services-list">
+        {% for client in clientList %}
+        <div class="service-card">
+            <div class="card-body">
+                <h5 class="service-title">{{ client.name }}</h5>
+                <div class="service-description text-muted mb-0">{{ client.email }}</div>
+                <div class="service-price fw-bold pull-right">{{ client.phone }}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+{% endblock %}

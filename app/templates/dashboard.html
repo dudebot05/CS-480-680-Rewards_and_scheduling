@@ -50,7 +50,10 @@
       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal">
         + Set Availability
       </button>
-          </div>
+      
+    </div>
+
+    <a href="{{ url_for('main.bookings', user_id=user_id) }}">Share this link to let customers make appointments with you</a>
 
     <div id="calendar"></div>
   </div>
